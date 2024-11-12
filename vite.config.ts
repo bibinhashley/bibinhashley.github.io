@@ -7,5 +7,5 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
-  base: '/bibinhashley.github.io/'
+  base: ''
 })
