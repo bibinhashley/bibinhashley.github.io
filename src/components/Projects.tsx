@@ -8,7 +8,8 @@ const projects = [
     description: "A web application for SEO optimization, including a Content AI Editor with keyword addition, blog writing, meta title & description generation, sentiment analysis, and competitor analysis.",
     image: "https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
     tech: ["Python", "Flask", "OpenAI API", "SQL", "JavaScript"],
-    live: "https://www.biscuitdata.com/"
+    live: "https://www.biscuitdata.com/",
+    github: ""
   },
 ];
 
