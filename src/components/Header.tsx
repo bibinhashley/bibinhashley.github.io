@@ -1,6 +1,7 @@
 
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, Menu, X } from 'lucide-react';
+import {useState} from "react";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
