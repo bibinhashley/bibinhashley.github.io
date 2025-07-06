@@ -1,124 +1,81 @@
+import React from 'react';
 import { motion } from 'framer-motion';
-import { Code, Palette, Globe, Coffee } from 'lucide-react';
+import { Code, Brain, Zap } from 'lucide-react';
 
-const skills = [
-  {
-    category: "AI & Machine Learning",
-    items: ["Python", "TensorFlow", "PyTorch", "Scikit-Learn", "OpenAI API"]
-  },
-  {
-    category: "Backend Development",
-    items: ["Flask", "FastAPI", "Django", "PostgreSQL", "MongoDB", "Redis"]
-  },
-  {
-    category: "Frontend & Web Technologies",
-    items: ["React", "TypeScript", "Tailwind CSS", "JavaScript", "Next.js"]
-  },
-  {
-    category: "Cloud & DevOps",
-    items: ["Google Cloud Platform", "AWS", "Docker", "Git", "Firebase"]
-  }
-];
-
-
-const features = [
-  {
-    icon: <Code className="w-6 h-6" />,
-    title: "Clean Code",
-    description: "Writing maintainable, scalable, and well-documented code is my passion."
-  },
-  {
-    icon: <Palette className="w-6 h-6" />,
-    title: "Creative Solutions",
-    description: "Approaching problems with innovative and efficient solutions."
-  },
-  {
-    icon: <Globe className="w-6 h-6" />,
-    title: "Global Perspective",
-    description: "Working with international teams and diverse projects."
-  },
-  {
-    icon: <Coffee className="w-6 h-6" />,
-    title: "Always Learning",
-    description: "Continuously expanding knowledge and staying up-to-date with tech."
-  }
-];
-
-export default function About() {
+const About = () => {
   return (
-      <section id="about" className="py-24 bg-white/80 backdrop-blur-sm">
-        <div className="container mx-auto px-4 sm:px-6">
+    <section className="py-16 md:py-20 px-4 -mt-10">
+      <div className="max-w-6xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-12 md:mb-16"
+        >
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">About Me</h2>
+          <div className="w-20 h-1 bg-blue-500 mx-auto"></div>
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
           <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="max-w-4xl mx-auto"
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">About Me</h2>
+            <p className="text-slate-300 text-base md:text-lg leading-relaxed mb-4 md:mb-6">
+              I'm a backend developer with 4+ years of experience building AI-powered web applications,
+              APIs, and automations. I combine strong skills in Python (Flask, FastAPI, ChatGPT integration)
+              and Kotlin (with monitoring via Zabbix) to deliver scalable and production-ready systems.
+            </p>
+            <p className="text-slate-300 text-base md:text-lg leading-relaxed">
+              Passionate about clean code, dev automation, and developer tooling, I blend machine learning
+              and modern backend development seamlessly to create impactful solutions.
+            </p>
+          </motion.div>
 
-            <div className="grid md:grid-cols-2 gap-12 mb-16">
-              <div className="order-2 md:order-1">
-                <h3 className="text-xl md:text-2xl font-semibold mb-4">Who I Am</h3>
-                <div className="space-y-4 text-gray-600">
-                  <p>
-                    I’m Bibin Hashley, a Python Developer with expertise in building intelligent, automated solutions that enhance user experiences. Skilled in Machine Learning and web frameworks like Flask, FastAPI, and Django, I’ve developed a range of APIs and web applications, particularly focused on SEO and content optimization. Leveraging prompt engineering and fine-tuning models, I create personalized content tools that streamline complex processes.</p> <p>My technical stack includes Python, JavaScript, SQL, and Google Cloud Platform, enabling me to deliver scalable, high-performance solutions across diverse projects.
-                </p>
-                </div>
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-1 gap-4 md:gap-6"
+          >
+            <div className="bg-slate-800/50 backdrop-blur-sm rounded-lg p-4 md:p-6 border border-slate-700 hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300">
+              <div className="flex items-center mb-3 md:mb-4">
+                <Code className="w-6 h-6 md:w-8 md:h-8 text-blue-400 mr-3" />
+                <h3 className="text-lg md:text-xl font-semibold text-white">Backend Development</h3>
               </div>
-              <div className="order-1 md:order-2">
-                <img
-                    src="https://images.unsplash.com/photo-1549692520-acc6669e2f0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                    alt="Working space"
-                    className="rounded-lg shadow-lg w-full h-64 object-cover"
-                />
-              </div>
+              <p className="text-slate-300 text-sm md:text-base">
+                Expert in Python & Kotlin for building scalable backend systems and APIs
+              </p>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-              {features.map((feature, index) => (
-                  <motion.div
-                      key={index}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: index * 0.1 }}
-                      className="p-6 bg-purple-50 rounded-lg text-center"
-                  >
-                    <div className="text-purple-600 mb-4 inline-block">{feature.icon}</div>
-                    <h3 className="font-semibold mb-2">{feature.title}</h3>
-                    <p className="text-sm text-gray-600">{feature.description}</p>
-                  </motion.div>
-              ))}
+            <div className="bg-slate-800/50 backdrop-blur-sm rounded-lg p-4 md:p-6 border border-slate-700 hover:shadow-lg hover:shadow-green-500/20 transition-all duration-300">
+              <div className="flex items-center mb-3 md:mb-4">
+                <Brain className="w-6 h-6 md:w-8 md:h-8 text-green-400 mr-3" />
+                <h3 className="text-lg md:text-xl font-semibold text-white">AI Integration</h3>
+              </div>
+              <p className="text-slate-300 text-sm md:text-base">
+                Specialized in integrating AI models, OpenAI APIs, and ML pipelines
+              </p>
             </div>
 
-            <div className="bg-purple-50 rounded-lg p-6 md:p-8">
-              <h3 className="text-xl md:text-2xl font-semibold mb-8 text-center">Technical Skills</h3>
-              <div className="grid gap-8 md:grid-cols-3">
-                {skills.map((skillSet, index) => (
-                    <motion.div
-                        key={index}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: index * 0.1 }}
-                    >
-                      <h4 className="font-semibold mb-4 text-purple-600">{skillSet.category}</h4>
-                      <div className="flex flex-wrap gap-2">
-                        {skillSet.items.map((skill, skillIndex) => (
-                            <span
-                                key={skillIndex}
-                                className="px-3 py-1 bg-white text-gray-700 rounded-full text-sm"
-                            >
-                        {skill}
-                      </span>
-                        ))}
-                      </div>
-                    </motion.div>
-                ))}
+            <div className="bg-slate-800/50 backdrop-blur-sm rounded-lg p-4 md:p-6 border border-slate-700 hover:shadow-lg hover:shadow-yellow-500/20 transition-all duration-300">
+              <div className="flex items-center mb-3 md:mb-4">
+                <Zap className="w-6 h-6 md:w-8 md:h-8 text-yellow-400 mr-3" />
+                <h3 className="text-lg md:text-xl font-semibold text-white">Automation</h3>
               </div>
+              <p className="text-slate-300 text-sm md:text-base">
+                Building automation tools, CI/CD pipelines, and monitoring systems
+              </p>
             </div>
           </motion.div>
         </div>
-      </section>
+      </div>
+    </section>
   );
-}
+};
+
+export default About;
