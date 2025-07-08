@@ -7,6 +7,7 @@ const Navigation = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [isScrolling, setIsScrolling] = useState(false);
     const [isMouseMoving, setIsMouseMoving] = useState(false);
+    const [isAtTop, setIsAtTop] = useState(true);
 
     const sections = [
         { id: 'hero', label: 'Home' },
@@ -29,6 +30,7 @@ const Navigation = () => {
         let scrollTimeout: number;
 
         const handleScroll = () => {
+            setIsAtTop(window.scrollY < 50);
             // Show navigation on any scroll movement
             setIsScrolling(true);
 
@@ -117,14 +119,14 @@ const Navigation = () => {
     };
 
     // Show navigation when scrolling OR mouse moving
-    const shouldShowNavigation = isScrolling || isMouseMoving;
+    const shouldShowNavigation = isScrolling || isMouseMoving || isAtTop;
 
     return (
         <>
             {/* Desktop Navigation */}
             <nav className={`fixed top-8 left-1/2 transform -translate-x-1/2 z-50 transition-all duration-500 ease-out hidden lg:block ${isVisible && shouldShowNavigation ? 'opacity-100 translate-y-0 backdrop-blur-md' : 'opacity-0 -translate-y-4 backdrop-blur-none'
-                }`}>
-                <div className="flex items-center space-x-3 px-8 py-4 rounded-xl bg-white/5 border border-white/10 shadow-2xl transition-all duration-500 ease-out">
+                } rounded-full`}>
+                <div className="flex items-center space-x-3 px-8 py-4 rounded-full bg-white/5 border border-white/10 shadow-2xl transition-all duration-500 ease-out">
                     {sections.map((section) => (
                         <button
                             key={section.id}
@@ -135,13 +137,13 @@ const Navigation = () => {
                                 }`}
                         >
                             {/* Animated background */}
-                            <div className={`absolute inset-0 rounded-lg transition-all duration-300 ease-in-out ${activeSection === section.id
+                            <div className={`absolute inset-0 rounded-full transition-all duration-300 ease-in-out ${activeSection === section.id
                                 ? 'bg-gradient-to-r from-blue-500/20 to-purple-500/20 scale-110'
                                 : 'bg-white/5 scale-0 group-hover:scale-100'
                                 }`} />
 
                             {/* Glow effect */}
-                            <div className={`absolute inset-0 rounded-lg transition-all duration-300 ease-in-out ${activeSection === section.id
+                            <div className={`absolute inset-0 rounded-full transition-all duration-300 ease-in-out ${activeSection === section.id
                                 ? 'bg-gradient-to-r from-blue-400/30 to-purple-400/30 blur-sm scale-125'
                                 : 'bg-white/0 scale-0 group-hover:scale-100 group-hover:bg-white/10'
                                 }`} />
@@ -168,7 +170,7 @@ const Navigation = () => {
                 {/* Mobile Menu Button */}
                 <button
                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                    className="p-3 rounded-xl bg-white/10 border border-white/20 shadow-lg hover:bg-white/20 transition-all duration-300 backdrop-blur-md"
+                    className="p-3 rounded-full bg-white/10 border border-white/20 shadow-lg hover:bg-white/20 transition-all duration-300 backdrop-blur-md"
                 >
                     {isMobileMenuOpen ? (
                         <X className="w-6 h-6 text-white" />
@@ -179,7 +181,7 @@ const Navigation = () => {
 
                 {/* Mobile Menu Dropdown */}
                 {isMobileMenuOpen && (
-                    <div className="absolute top-full right-0 mt-2 w-48 rounded-xl bg-white/10 border border-white/20 shadow-xl overflow-hidden backdrop-blur-md transition-all duration-300">
+                    <div className="absolute top-full right-0 mt-2 w-48 rounded-2xl bg-white/10 border border-white/20 shadow-xl overflow-hidden backdrop-blur-md transition-all duration-300">
                         {sections.map((section) => (
                             <button
                                 key={section.id}
@@ -207,4 +209,4 @@ const Navigation = () => {
     );
 };
 
-export default Navigation; 
+export default Navigation;
