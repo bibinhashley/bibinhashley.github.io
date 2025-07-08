@@ -9,7 +9,7 @@ const Footer = () => {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
           viewport={{ once: true }}
           className="text-center"
         >
@@ -26,7 +26,7 @@ const Footer = () => {
             <span>and lots of ☕</span>
           </div>
           <p className="text-slate-500 text-xs md:text-sm mt-3 md:mt-4">
-            © 2024 Bibin Hashley O P. All rights reserved.
+            © 2025 Bibin Hashley O P. All rights reserved.
           </p>
         </motion.div>
       </div>

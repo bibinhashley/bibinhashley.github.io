@@ -85,7 +85,7 @@ const Projects = () => {
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
+              transition={{ duration: 0.8, delay: 0.2 + index * 0.1 }}
               viewport={{ once: true }}
               className="bg-slate-900/50 backdrop-blur-sm rounded-lg p-4 md:p-6 border border-slate-700 hover:border-slate-600 hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300 group"
             >

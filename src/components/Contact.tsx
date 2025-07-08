@@ -69,9 +69,9 @@ const Contact = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
           <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
             viewport={{ once: true }}
             className="space-y-4 md:space-y-6"
           >
@@ -80,7 +80,7 @@ const Contact = () => {
                 key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: index * 0.1 }}
+                transition={{ duration: 0.8, delay: 0.4 + index * 0.1 }}
                 viewport={{ once: true }}
               >
                 {link.href ? (
@@ -114,9 +114,9 @@ const Contact = () => {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
             viewport={{ once: true }}
             className="bg-slate-900/50 backdrop-blur-sm rounded-lg p-4 md:p-8 border border-slate-700"
           >
