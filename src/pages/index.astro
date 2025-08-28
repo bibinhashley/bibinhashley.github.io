@@ -1,0 +1,52 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.tsx';
+import Hero from '../components/Hero.tsx';
+import About from '../components/About.astro';
+import Experience from '../components/Experience.astro';
+import Skills from '../components/Skills.astro';
+import Projects from '../components/Projects.astro';
+import Blog from '../components/Blog.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+---
+
+<Layout 
+  title="Bibin Hashley O P - Python AI Developer & Kotlin Backend Developer | Portfolio"
+  description="Professional portfolio of Bibin Hashley O P - Experienced Python AI Developer and Kotlin Backend Developer from Kozhikode, Kerala with 4+ years expertise in building scalable systems, AI applications, and backend services."
+>
+  <Navigation client:load />
+  
+  <main>
+    <section id="hero" aria-label="Hero section">
+      <Hero client:load />
+    </section>
+    
+    <section id="about" class="pt-4 md:pt-8" aria-label="About section">
+      <About />
+    </section>
+    
+    <section id="experience" class="pt-4 md:pt-8" aria-label="Experience section">
+      <Experience />
+    </section>
+    
+    <section id="skills" class="pt-4 md:pt-8" aria-label="Skills section">
+      <Skills />
+    </section>
+    
+    <section id="projects" class="pt-4 md:pt-8" aria-label="Projects section">
+      <Projects />
+    </section>
+    
+    <section id="blog" class="pt-4 md:pt-8" aria-label="Blog section">
+      <Blog />
+    </section>
+    
+    <section id="contact" class="pt-4 md:pt-8" aria-label="Contact section">
+      <Contact />
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>

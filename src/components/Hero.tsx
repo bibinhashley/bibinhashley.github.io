@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ChevronDown, Github, Linkedin, Mail } from 'lucide-react';
 
@@ -61,8 +61,6 @@ const Hero = () => {
 
   return (
     <section className="min-h-screen flex flex-col justify-center items-center relative overflow-hidden px-4">
-
-
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -72,7 +70,7 @@ const Hero = () => {
           className="mb-6 md:mb-8"
         >
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3 md:mb-4 leading-tight">
-            {nameText}<span className="inline-block w-1 h-8 md:h-20 bg-slate-400 animate-cursor-blink ml-1 align-text-bottom"></span>
+            {nameText}<span className="inline-block w-1 h-8 md:h-20 bg-slate-400 animate-pulse ml-1 align-text-bottom"></span>
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-blue-400 mb-2">
             Python AI Developer | Kotlin Backend Developer
@@ -134,6 +132,7 @@ const Hero = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="text-slate-300 hover:text-white transition-colors duration-300 p-2 hover:bg-white/10 rounded-full"
+            aria-label="GitHub Profile"
           >
             <Github size={24} className="md:w-7 md:h-7" />
           </a>
@@ -142,12 +141,14 @@ const Hero = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="text-slate-300 hover:text-blue-400 transition-colors duration-300 p-2 hover:bg-white/10 rounded-full"
+            aria-label="LinkedIn Profile"
           >
             <Linkedin size={24} className="md:w-7 md:h-7" />
           </a>
           <a
             href="mailto:bibinhashley@gmail.com"
             className="text-slate-300 hover:text-green-400 transition-colors duration-300 p-2 hover:bg-white/10 rounded-full"
+            aria-label="Email Contact"
           >
             <Mail size={24} className="md:w-7 md:h-7" />
           </a>

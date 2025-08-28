@@ -1,0 +1,155 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Python AI Developer & Kotlin Backend Developer with 4+ years of experience building scalable systems and AI-powered applications in Kozhikode, Kerala." } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={description} />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalURL} />
+    
+    <!-- Icons -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    
+    <!-- DNS Prefetch and Preconnect -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Optimized Font Loading -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
+    
+    <!-- Google Search Console Verification -->
+    <meta name="google-site-verification" content="e8c2eb7adb8943a2" />
+    
+    <!-- SEO Meta Tags -->
+    <meta name="author" content="Bibin Hashley O P" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="keywords" content="Bibin Hashley, Python Developer, Kotlin Developer, AI Developer, Backend Developer, Machine Learning Engineer, Software Engineer, Portfolio, Kozhikode, Kerala, India, Full Stack Developer, API Development, Data Science" />
+    <meta name="language" content="English" />
+    <meta name="revisit-after" content="7 days" />
+    <meta name="theme-color" content="#1e40af" />
+    <meta name="msapplication-TileColor" content="#1e40af" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content="https://bibinhashley.github.io/favicon.svg" />
+    <meta property="og:image:alt" content="Bibin Hashley O P - Python AI Developer & Kotlin Backend Developer" />
+    <meta property="og:site_name" content="Bibin Hashley Portfolio" />
+    <meta property="og:locale" content="en_US" />
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://bibinhashley.github.io/favicon.svg" />
+    <meta name="twitter:image:alt" content="Bibin Hashley O P - Python AI Developer & Kotlin Backend Developer" />
+    <meta name="twitter:creator" content="@bibinhashley" />
+    <meta name="twitter:site" content="@bibinhashley" />
+    
+    <!-- LinkedIn specific -->
+    <meta property="article:author" content="https://linkedin.com/in/bibinhashley" />
+    
+    <!-- Enhanced Schema.org structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Bibin Hashley O P",
+        "alternateName": "Bibin Hashley",
+        "jobTitle": ["Python AI Developer", "Kotlin Backend Developer", "Software Engineer"],
+        "description": "Experienced Python AI Developer and Kotlin Backend Developer with 4+ years of expertise in building scalable systems, AI-powered applications, and backend services.",
+        "url": "https://bibinhashley.github.io",
+        "image": "https://bibinhashley.github.io/favicon.svg",
+        "email": "bibinhashley@gmail.com",
+        "telephone": "+91-XXXXXXXXXX",
+        "sameAs": [
+          "https://github.com/bibinhashley",
+          "https://linkedin.com/in/bibinhashley",
+          "https://twitter.com/bibinhashley"
+        ],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Kozhikode",
+          "addressRegion": "Kerala",
+          "addressCountry": "India"
+        },
+        "worksFor": {
+          "@type": "Organization",
+          "name": "Freelance Developer"
+        },
+        "knowsAbout": [
+          "Python Programming",
+          "Kotlin Development",
+          "Artificial Intelligence",
+          "Machine Learning",
+          "Backend Development",
+          "API Development",
+          "Database Design",
+          "Cloud Computing",
+          "Software Architecture"
+        ],
+        "hasOccupation": {
+          "@type": "Occupation",
+          "name": "Software Developer",
+          "occupationalCategory": "15-1252.00",
+          "skills": "Python, Kotlin, AI/ML, Backend Development, API Design"
+        }
+      }
+    </script>
+    
+    <!-- Website Schema -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Bibin Hashley Portfolio",
+        "url": "https://bibinhashley.github.io",
+        "description": "Professional portfolio of Bibin Hashley O P - Python AI Developer & Kotlin Backend Developer",
+        "author": {
+          "@type": "Person",
+          "name": "Bibin Hashley O P"
+        },
+        "inLanguage": "en-US"
+      }
+    </script>
+    
+    <title>{title}</title>
+  </head>
+  <body>
+    <div 
+      class="min-h-screen text-white overflow-x-hidden"
+      style="background: linear-gradient(to bottom right, #0f172a, #1e3a8a, #1e40af, #0f172a); scroll-behavior: smooth;"
+    >
+      <slot />
+    </div>
+  </body>
+</html>

@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   theme: {
     extend: {
       fontFamily: {
@@ -20,8 +20,10 @@ export default {
       },
       keyframes: {
         'cursor-blink': {
-          '0%, 50%': { opacity: '1' },
-          '51%, 100%': { opacity: '0' },
+          '0%': { opacity: '1' },
+          '50%': { opacity: '1' },
+          '51%': { opacity: '0' },
+          '100%': { opacity: '0' },
         },
       },
     },

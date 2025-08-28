@@ -1,0 +1,49 @@
+---
+import { Heart, Code } from 'lucide-react';
+---
+
+<footer class="py-8 md:py-12 px-4 border-t border-slate-700">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center opacity-0 animate-fade-in-delay-200">
+      <div class="flex items-center justify-center mb-3 md:mb-4">
+        <Code className="w-5 h-5 md:w-6 md:h-6 text-blue-400 mr-2" client:load />
+        <span class="text-white font-semibold text-base md:text-lg">Bibin Hashley O P</span>
+      </div>
+      <p class="text-slate-400 mb-3 md:mb-4 text-sm md:text-base">
+        Building the future with Python, Kotlin, and AI
+      </p>
+      <div class="flex items-center justify-center text-slate-400 text-sm md:text-base">
+        <span>Made with</span>
+        <Heart className="w-3 h-3 md:w-4 md:h-4 mx-2 text-red-400 fill-current" client:load />
+        <span>and lots of ☕</span>
+      </div>
+      <p class="text-slate-500 text-xs md:text-sm mt-3 md:mt-4">
+        © 2025 Bibin Hashley O P. All rights reserved.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-fade-in-delay-200 {
+    animation: fade-in 0.8s ease-out 0.4s forwards;
+  }
+
+  /* Add intersection observer for better performance */
+  @media (prefers-reduced-motion: no-preference) {
+    .animate-fade-in-delay-200 {
+      opacity: 0;
+    }
+  }
+</style>

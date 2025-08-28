@@ -38,7 +38,7 @@ const Navigation = () => {
             clearTimeout(scrollTimeout);
 
             // Hide navigation after scrolling stops for 1.5 seconds
-            scrollTimeout = setTimeout(() => {
+            scrollTimeout = window.setTimeout(() => {
                 setIsScrolling(false);
             }, 1500);
         };
@@ -62,7 +62,7 @@ const Navigation = () => {
             clearTimeout(mouseTimeout);
 
             // Hide navigation after mouse stops moving for 2 seconds
-            mouseTimeout = setTimeout(() => {
+            mouseTimeout = window.setTimeout(() => {
                 setIsMouseMoving(false);
             }, 2000);
         };
