@@ -16,6 +16,11 @@ Disallow: /private/
 Disallow: /api/
 Disallow: /_astro/
 
+# Allow access to important files
+Allow: /humans.txt
+Allow: /security.txt
+Allow: /manifest.json
+
 # Specific bot instructions
 User-agent: Googlebot
 Allow: /

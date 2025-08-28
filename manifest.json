@@ -1,0 +1,30 @@
+{
+    "name": "Bibin Hashley - Python AI Developer & Kotlin Backend Developer",
+    "short_name": "Bibin Hashley",
+    "description": "Professional portfolio of Bibin Hashley O P - Expert Python AI Developer and Kotlin Backend Developer with 4+ years experience in AI/ML, API development, and scalable backend systems.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0f172a",
+    "theme_color": "#1e40af",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/favicon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/favicon.ico",
+            "sizes": "16x16 32x32",
+            "type": "image/x-icon"
+        }
+    ],
+    "categories": [
+        "productivity",
+        "business",
+        "developer tools"
+    ],
+    "lang": "en-US",
+    "dir": "ltr"
+}
