@@ -61,6 +61,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="mobile-web-app-capable" content="yes" />
+    <link rel="manifest" href="/manifest.json" />
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content={title} />
@@ -83,6 +84,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     
     <!-- LinkedIn specific -->
     <meta property="article:author" content="https://linkedin.com/in/bibinhashley" />
+    
+    <!-- Additional Social Media Meta Tags -->
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:creator" content="@bibinhashley" />
+    <meta name="twitter:site" content="@bibinhashley" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Bibin Hashley O P" />
+    <meta name="twitter:label2" content="Est. reading time" />
+    <meta name="twitter:data2" content="3 minutes" />
     
     <!-- Enhanced Schema.org structured data -->
     <script type="application/ld+json">
@@ -159,7 +170,44 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
           "@type": "Person",
           "name": "Bibin Hashley O P"
         },
-        "inLanguage": "en-US"
+        "inLanguage": "en-US",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://bibinhashley.github.io/search?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      }
+    </script>
+
+    <!-- CreativeWork Schema for Blog Articles -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "CreativeWork",
+        "name": "Python AI Development & Kotlin Backend Articles",
+        "author": {
+          "@type": "Person",
+          "name": "Bibin Hashley O P",
+          "url": "https://bibinhashley.github.io"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Bibin Hashley Portfolio",
+          "url": "https://bibinhashley.github.io"
+        },
+        "about": [
+          "Python AI Development",
+          "Kotlin Backend Development", 
+          "OpenAI GPT Integration",
+          "FastAPI Development",
+          "Machine Learning",
+          "API Development"
+        ],
+        "isPartOf": {
+          "@type": "WebSite",
+          "name": "Bibin Hashley Portfolio",
+          "url": "https://bibinhashley.github.io"
+        }
       }
     </script>
     

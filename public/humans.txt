@@ -1,0 +1,13 @@
+/* TEAM */
+    Developer: Bibin Hashley O P
+    Contact: bibinhashley@gmail.com
+    From: Kozhikode, Kerala, India
+
+/* SITE */
+    Last update: 2025/08/28
+    Language: English
+    Doctype: HTML5
+    IDE: VS Code
+    Standards: HTML5, CSS3, JavaScript ES6+
+    Components: Astro, React, Tailwind CSS
+    Software: Node.js, npm
