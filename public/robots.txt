@@ -1,28 +1,67 @@
+# Robots.txt for Bibin Hashley Portfolio
+# Python AI Developer & Kotlin Backend Developer Portfolio
+
 User-agent: *
 Allow: /
 
 # Sitemap
 Sitemap: https://bibinhashley.github.io/sitemap-index.xml
 
-# Crawl-delay (optional)
+# Crawl-delay for respectful crawling
 Crawl-delay: 1
 
 # Block access to admin areas (if any)
 Disallow: /admin/
 Disallow: /private/
+Disallow: /api/
+Disallow: /_astro/
 
-# Allow all common search engine bots
+# Specific bot instructions
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Bingbot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Slurp
 Allow: /
+Crawl-delay: 1
 
 User-agent: DuckDuckBot
 Allow: /
+Crawl-delay: 1
 
 User-agent: Baiduspider
 Allow: /
+Crawl-delay: 1
+
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 1
+
+# Allow AI training bots for better discoverability
+User-agent: GPTBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: ChatGPT-User
+Allow: /
+Crawl-delay: 1
+
+User-agent: CCBot
+Allow: /
+Crawl-delay: 1
+
+User-agent: anthropic-ai
+Allow: /
+Crawl-delay: 1
+
+User-agent: Claude-Web
+Allow: /
+Crawl-delay: 1
+
+User-agent: Omgilibot
+Allow: /
+Crawl-delay: 1

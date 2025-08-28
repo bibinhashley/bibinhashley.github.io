@@ -13,8 +13,12 @@ export default defineConfig({
     }),
     sitemap({
       changefreq: 'weekly',
-      priority: 0.7,
+      priority: 0.8,
       lastmod: new Date(),
+      filter: (page) => {
+        // Include all pages in sitemap
+        return true;
+      },
     })
   ],
   site: 'https://bibinhashley.github.io',
