@@ -54,10 +54,10 @@ const colorMap = {
 
     <div class="max-w-2xl mx-auto">
       <!-- Contact Links -->
-      <div class="space-y-4 md:space-y-6 opacity-0 animate-fade-in-delay-200">
+      <div class="space-y-4 md:space-y-6">
         {contactLinks.map((link, index) => 
           link.href ? (
-            <div class={`opacity-0 animate-fade-in-delay-${400 + (index * 100)}`}>
+            <div>
               <a
                 href={link.href}
                 target={link.href.startsWith('mailto:') ? '_self' : '_blank'}
@@ -74,7 +74,7 @@ const colorMap = {
               </a>
             </div>
           ) : (
-            <div class={`opacity-0 animate-fade-in-delay-${400 + (index * 100)}`}>
+            <div>
               <div class={`flex items-center p-3 md:p-4 rounded-lg border ${colorMap[link.color]}`}>
                 <div class="mr-3 md:mr-4">
                   <IconWrapper name={link.icon} className="w-6 h-6" client:load />
@@ -120,12 +120,22 @@ const colorMap = {
     animation: fade-in 0.8s ease-out 0.7s forwards;
   }
 
+  .animate-fade-in-delay-600 {
+    animation: fade-in 0.8s ease-out 0.8s forwards;
+  }
+
+  .animate-fade-in-delay-700 {
+    animation: fade-in 0.8s ease-out 0.9s forwards;
+  }
+
   /* Add intersection observer for better performance */
   @media (prefers-reduced-motion: no-preference) {
     .animate-fade-in,
     .animate-fade-in-delay-200,
     .animate-fade-in-delay-400,
-    .animate-fade-in-delay-500 {
+    .animate-fade-in-delay-500,
+    .animate-fade-in-delay-600,
+    .animate-fade-in-delay-700 {
       opacity: 0;
     }
   }
