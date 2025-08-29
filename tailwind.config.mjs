@@ -9,7 +9,6 @@ export default {
       },
       animation: {
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'cursor-blink': 'cursor-blink 1s infinite',
       },
       backdropBlur: {
         'xs': '2px',
@@ -17,14 +16,6 @@ export default {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
-      keyframes: {
-        'cursor-blink': {
-          '0%': { opacity: '1' },
-          '50%': { opacity: '1' },
-          '51%': { opacity: '0' },
-          '100%': { opacity: '0' },
-        },
       },
     },
   },

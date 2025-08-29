@@ -25,13 +25,14 @@ const Navigation = () => {
         return () => clearTimeout(timer);
     }, []);
 
-    // Handle scroll-based visibility
+    // Handle scroll-based functionality
     useEffect(() => {
         let scrollTimeout: number;
+        let ticking = false;
 
         const handleScroll = () => {
+            // Handle visibility
             setIsAtTop(window.scrollY < 50);
-            // Show navigation on any scroll movement
             setIsScrolling(true);
 
             // Clear previous timeout
@@ -41,6 +42,25 @@ const Navigation = () => {
             scrollTimeout = window.setTimeout(() => {
                 setIsScrolling(false);
             }, 1500);
+
+            // Handle active section detection
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    const scrollPosition = window.scrollY + 100;
+
+                    sections.forEach(section => {
+                        const element = document.getElementById(section.id);
+                        if (element) {
+                            const { offsetTop, offsetHeight } = element;
+                            if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+                                setActiveSection(section.id);
+                            }
+                        }
+                    });
+                    ticking = false;
+                });
+                ticking = true;
+            }
         };
 
         window.addEventListener('scroll', handleScroll, { passive: true });
@@ -55,13 +75,9 @@ const Navigation = () => {
         let mouseTimeout: number;
 
         const handleMouseMove = () => {
-            // Show navigation on mouse movement
             setIsMouseMoving(true);
-
-            // Clear previous timeout
             clearTimeout(mouseTimeout);
-
-            // Hide navigation after mouse stops moving for 2 seconds
+            
             mouseTimeout = window.setTimeout(() => {
                 setIsMouseMoving(false);
             }, 2000);
@@ -71,36 +87,6 @@ const Navigation = () => {
         return () => {
             window.removeEventListener('mousemove', handleMouseMove);
             clearTimeout(mouseTimeout);
-        };
-    }, []);
-
-    useEffect(() => {
-        let ticking = false;
-
-        const handleScroll = () => {
-            if (!ticking) {
-                requestAnimationFrame(() => {
-                    const scrollPosition = window.scrollY + 100;
-
-                    sections.forEach(section => {
-                        const element = document.getElementById(section.id);
-                        if (element) {
-                            const { offsetTop, offsetHeight } = element;
-                            if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-                                // Update active section immediately without delay
-                                setActiveSection(section.id);
-                            }
-                        }
-                    });
-                    ticking = false;
-                });
-                ticking = true;
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
         };
     }, []);
 
