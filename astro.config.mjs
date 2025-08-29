@@ -15,10 +15,8 @@ export default defineConfig({
       changefreq: 'weekly',
       priority: 0.8,
       lastmod: new Date(),
-      filter: (page) => {
-        // Include all pages in sitemap
-        return true;
-      },
+      entryLimit: 50000,
+      filter: () => true,
     })
   ],
   site: 'https://bibinhashley.github.io',
