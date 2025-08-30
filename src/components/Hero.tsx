@@ -60,72 +60,109 @@ const Hero = () => {
   }, [currentIndex]);
 
   return (
-    <section className="min-h-screen flex flex-col justify-center items-center relative overflow-hidden px-4">
-      <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
+    <section className="min-h-screen flex flex-col justify-center items-center relative overflow-hidden">
+
+      <div className="relative z-10 text-center px-4 max-w-5xl mx-auto pt-28 md:pt-32">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, y: 30, scale: 0.95 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 1.2, ease: [0.4, 0, 0.2, 1] }}
           viewport={{ once: true }}
-          className="mb-6 md:mb-8"
+          className="mb-8 md:mb-12"
         >
-          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-3 md:mb-4 leading-tight">
-            {nameText}<span className="inline-block w-1 h-8 md:h-20 bg-slate-400 animate-pulse ml-1 align-text-bottom"></span>
-          </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-blue-400 mb-2">
-            Python AI Developer | Kotlin Backend Developer
-          </p>
-          <p className="text-base md:text-lg text-slate-300">
-            Kozhikode, Kerala, India • 4+ Years Experience
+          {/* Main Heading with Gradient Text */}
+          <div className="mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
+              <span className="text-gradient heading-style text-balance">
+                {nameText}
+              </span>
+              {nameIndex < fullName.length && (
+                <span className="inline-block w-1 h-8 md:h-16 lg:h-20 bg-gradient-to-b from-blue-400 to-purple-500 animate-pulse ml-2 align-text-bottom rounded-full"></span>
+              )}
+            </h1>
+          </div>
+
+          {/* Role with Enhanced Styling */}
+          <div className="relative mb-4">
+            <p className="text-lg sm:text-xl md:text-2xl font-semibold text-gradient-secondary mb-3">
+              Python AI Developer | Kotlin Backend Developer
+            </p>
+            <div className="h-1 w-24 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 mx-auto rounded-full"></div>
+          </div>
+
+          {/* Location and Experience */}
+          <p className="text-base md:text-lg text-slate-300 font-medium">
+            🌍 Kozhikode, Kerala, India • ⚡ 4+ Years Experience
           </p>
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          initial={{ opacity: 0, y: 30, scale: 0.95 }}
+          whileInView={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 1, delay: 0.3, ease: [0.4, 0, 0.2, 1] }}
           viewport={{ once: true }}
-          className="bg-slate-900/30 backdrop-blur-xl rounded-xl p-4 md:p-6 max-w-2xl mx-auto mb-6 md:mb-8 border border-white/10 shadow-2xl shadow-blue-500/10 hover:shadow-blue-500/20 transition-all duration-500"
-          style={{
-            minHeight: '200px',
-            background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.3) 0%, rgba(30, 58, 138, 0.2) 100%)'
+          className="bg-black/20 backdrop-blur-xl rounded-2xl overflow-hidden max-w-3xl mx-auto mb-8 md:mb-12 border border-white/20 hover:border-white/30 transition-all duration-300 group shadow-2xl"
+          style={{ 
+            minHeight: '280px',
+            background: 'linear-gradient(145deg, rgba(0,0,0,0.2), rgba(255,255,255,0.05))',
+            backdropFilter: 'blur(20px)',
+            boxShadow: '0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1)'
           }}
         >
-          <div className="flex items-center justify-between mb-3">
-            <motion.span
-              key={currentIndex}
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3 }}
-              className="text-xs md:text-sm text-slate-400 font-medium"
-            >
-              {codeSnippets[currentIndex].filename}
-            </motion.span>
-            <div className="flex space-x-1">
-              <div className="w-2 h-2 md:w-3 md:h-3 bg-red-500 rounded-full shadow-sm"></div>
-              <div className="w-2 h-2 md:w-3 md:h-3 bg-yellow-500 rounded-full shadow-sm"></div>
-              <div className="w-2 h-2 md:w-3 md:h-3 bg-green-500 rounded-full shadow-sm"></div>
+          {/* Mac Terminal Header */}
+          <div className="flex items-center justify-between px-4 py-3 bg-gradient-to-r from-gray-800/50 to-gray-700/50 border-b border-white/10">
+            <div className="flex items-center space-x-2">
+              <div className="w-3 h-3 bg-red-500 rounded-full hover:bg-red-400 transition-colors cursor-pointer"></div>
+              <div className="w-3 h-3 bg-yellow-500 rounded-full hover:bg-yellow-400 transition-colors cursor-pointer"></div>
+              <div className="w-3 h-3 bg-green-500 rounded-full hover:bg-green-400 transition-colors cursor-pointer"></div>
             </div>
+            
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4 }}
+              className="flex items-center space-x-2"
+            >
+              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+              <span className="text-sm text-slate-300 font-mono font-medium">
+                {codeSnippets[currentIndex].filename}
+              </span>
+            </motion.div>
+            
+            <div className="w-20"></div> {/* Spacer for center alignment */}
           </div>
-          <motion.pre
-            key={currentIndex}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: isTransitioning ? 0 : 1 }}
-            transition={{ duration: 0.3 }}
-            className="text-left text-green-400 font-mono text-xs md:text-sm leading-relaxed"
-          >
-            <code className="block bg-slate-800/50 rounded-lg p-4 backdrop-blur-sm border border-slate-700/50 whitespace-pre-wrap break-words">
-              {displayText}<span className="animate-pulse">|</span>
-            </code>
-          </motion.pre>
+
+          {/* Mac Terminal Content */}
+          <div className="p-6">
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: isTransitioning ? 0 : 1 }}
+              transition={{ duration: 0.4 }}
+              className="relative"
+            >
+              <pre className="text-left font-mono text-sm md:text-base leading-relaxed overflow-x-auto text-green-400">
+                <code className="block whitespace-pre-wrap break-words">
+                  {displayText}
+                  <motion.span 
+                    className="inline-block w-0.5 h-5 bg-green-400 ml-1 translate-y-1"
+                    animate={{ opacity: [1, 0] }}
+                    transition={{ duration: 0.8, repeat: Infinity, repeatType: "reverse" }}
+                  />
+                </code>
+              </pre>
+            </motion.div>
+          </div>
+
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
           viewport={{ once: true }}
-          className="flex justify-center space-x-4 md:space-x-6 mb-8 md:mb-12"
+          className="flex justify-center items-center space-x-6 md:space-x-8 mb-12 md:mb-16"
         >
           <a
             href="https://github.com/bibinhashley"
@@ -136,6 +173,7 @@ const Hero = () => {
           >
             <Github size={24} className="md:w-7 md:h-7" />
           </a>
+
           <a
             href="https://linkedin.com/in/bibinhashley"
             target="_blank"
@@ -145,6 +183,7 @@ const Hero = () => {
           >
             <Linkedin size={24} className="md:w-7 md:h-7" />
           </a>
+
           <a
             href="mailto:bibinhashley@gmail.com"
             className="text-slate-300 hover:text-green-400 transition-colors duration-300 p-2 hover:bg-white/10 rounded-full"
@@ -158,11 +197,23 @@ const Hero = () => {
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.6 }}
+        transition={{ duration: 0.8, delay: 0.7 }}
         viewport={{ once: true }}
-        className="absolute bottom-4 md:bottom-8 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-8 md:bottom-12 left-1/2 transform -translate-x-1/2"
       >
-        <ChevronDown className="w-5 h-5 md:w-6 md:h-6 text-slate-400 animate-bounce" />
+        <motion.div
+          className="cursor-pointer group"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          animate={{ y: [0, -8, 0] }}
+          transition={{ duration: 2, repeat: Infinity, repeatType: "loop" }}
+          onClick={() => {
+            const aboutSection = document.getElementById('about');
+            aboutSection?.scrollIntoView({ behavior: 'smooth' });
+          }}
+        >
+          <ChevronDown className="w-8 h-8 md:w-10 md:h-10 text-slate-400 group-hover:text-blue-400 transition-colors duration-300" />
+        </motion.div>
       </motion.div>
     </section>
   );

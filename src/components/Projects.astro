@@ -56,39 +56,95 @@ const colorMap = {
 };
 ---
 
-<section class="py-16 md:py-20 px-4">
-  <div class="max-w-6xl mx-auto">
-    <!-- Section Header -->
-    <div class="text-center mb-12 md:mb-16 opacity-0 animate-fade-in">
-      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Featured Projects</h2>
-      <div class="w-20 h-1 bg-blue-500 mx-auto"></div>
+<section class="py-20 md:py-28 px-4 relative overflow-hidden">
+
+  <div class="max-w-7xl mx-auto relative z-10">
+    <!-- Enhanced Section Header -->
+    <div class="text-center mb-16 md:mb-20 opacity-0 animate-fade-in">
+      <div class="inline-block mb-6">
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gradient heading-style text-balance mb-6">
+          Featured Projects
+        </h2>
+      </div>
+      <div class="flex items-center justify-center space-x-2">
+        <div class="h-1 w-16 bg-gradient-to-r from-transparent via-purple-500 to-transparent rounded-full"></div>
+        <div class="w-3 h-3 bg-purple-500 rounded-full shadow-glow animate-pulse"></div>
+        <div class="h-1 w-16 bg-gradient-to-r from-transparent via-pink-500 to-transparent rounded-full"></div>
+      </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+    <!-- Enhanced Project Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-10">
       {projects.map((project, index) => (
           <div 
-            class={`bg-slate-900/50 backdrop-blur-sm rounded-lg p-4 md:p-6 border border-slate-700 hover:border-slate-600 hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300 group opacity-0 animate-fade-in-delay-${(index + 1) * 100}`}
+            class={`glass-card rounded-3xl p-6 md:p-8 interactive-hover glow-border group will-change-transform opacity-0 animate-fade-in-delay-${(index + 1) * 100} relative overflow-hidden`}
           >
-            <div class="flex items-center mb-4">
-              <div class={`inline-flex items-center justify-center p-2 md:p-3 rounded-lg mr-3 md:mr-4 ${colorMap[project.color]}`}>
-                <IconWrapper name={project.icon} className="w-6 h-6" client:load />
+            {/* Project Icon & Header */}
+            <div class="flex items-start mb-6">
+              <div class="flex items-center space-x-4">
+                <div class={`w-14 h-14 rounded-2xl flex items-center justify-center shadow-glow group-hover:shadow-glow-lg transition-shadow duration-300 ${colorMap[project.color]} border-2`}>
+                  <IconWrapper name={project.icon} className="w-7 h-7" client:load />
+                </div>
+                <div>
+                  <h3 class="text-xl md:text-2xl font-bold text-white group-hover:text-gradient transition-all duration-300 leading-tight">
+                    {project.title}
+                  </h3>
+                </div>
               </div>
-              <h3 class="text-lg md:text-xl font-bold text-white">{project.title}</h3>
             </div>
 
-            <p class="text-slate-300 mb-4 md:mb-6 leading-relaxed text-sm md:text-base">
+            {/* Project Description */}
+            <p class="text-slate-300 mb-6 leading-relaxed text-base">
               {project.description}
             </p>
 
-            <div class="flex flex-wrap gap-2 mb-4 md:mb-6">
+            {/* Technology Tags */}
+            <div class="flex flex-wrap gap-2 mb-6">
               {project.technologies.map((tech) => (
-                <span class="bg-slate-700/50 text-slate-300 px-2 md:px-3 py-1 rounded-full text-xs md:text-sm border border-slate-600">
+                <span class="px-3 py-1.5 bg-white/5 backdrop-blur-sm text-slate-300 rounded-full text-sm font-medium border border-white/10 hover:border-white/20 hover:bg-white/10 transition-all duration-300">
                   {tech}
                 </span>
               ))}
             </div>
+
+
+            {/* Shimmer Effect */}
+            <div class="absolute inset-0 rounded-3xl overflow-hidden pointer-events-none">
+              <div class="shimmer absolute inset-0 opacity-10"></div>
+            </div>
+
+            {/* Gradient Border on Hover */}
+            <div class="absolute inset-0 rounded-3xl border-2 border-transparent bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
           </div>
         ))}
+    </div>
+
+    {/* Call to Action */}
+    <div class="text-center mt-16 md:mt-20 opacity-0 animate-fade-in-delay-700">
+      <div class="glass-card rounded-2xl p-8 md:p-10 max-w-3xl mx-auto">
+        <h3 class="text-2xl md:text-3xl font-bold text-white mb-4">
+          Ready to Build Something Amazing?
+        </h3>
+        <p class="text-slate-300 text-lg mb-8 text-balance">
+          Let's collaborate on your next project and bring your ideas to life with cutting-edge technology.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a 
+            href="#contact" 
+            class="glass-effect px-8 py-4 rounded-2xl text-white font-semibold hover:bg-white/20 transition-all duration-300 focus-ring interactive-hover group"
+          >
+            <span class="group-hover:text-gradient">Start a Project</span>
+          </a>
+          <a 
+            href="https://github.com/bibinhashley" 
+            target="_blank"
+            rel="noopener noreferrer"
+            class="glass-effect px-8 py-4 rounded-2xl text-slate-300 font-semibold hover:bg-white/10 hover:text-white transition-all duration-300 focus-ring interactive-hover"
+          >
+            View All Work
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </section>

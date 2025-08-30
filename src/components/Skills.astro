@@ -50,18 +50,26 @@ const colorMap = {
 };
 ---
 
-<section class="py-16 md:py-20 px-4">
-  <div class="max-w-6xl mx-auto">
-    <!-- Section Header -->
-    <div class="text-center mb-12 md:mb-16 opacity-0 animate-fade-in">
-      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Technical Skills</h2>
-      <div class="w-20 h-1 bg-blue-500 mx-auto"></div>
+<section class="py-20 md:py-28 px-4 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto relative z-10">
+    <!-- Enhanced Section Header -->
+    <div class="text-center mb-16 md:mb-20 opacity-0 animate-fade-in">
+      <div class="inline-block mb-6">
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gradient heading-style text-balance mb-6">
+          Technical Skills
+        </h2>
+      </div>
+      <div class="flex items-center justify-center space-x-2">
+        <div class="h-1 w-16 bg-gradient-to-r from-transparent via-purple-500 to-transparent rounded-full"></div>
+        <div class="w-3 h-3 bg-purple-500 rounded-full shadow-glow animate-pulse"></div>
+        <div class="h-1 w-16 bg-gradient-to-r from-transparent via-pink-500 to-transparent rounded-full"></div>
+      </div>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
       {skillCategories.map((category, index) => (
           <div 
-            class={`bg-slate-800/50 backdrop-blur-sm rounded-lg p-4 md:p-6 border border-slate-700 hover:border-slate-600 hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300 opacity-0 animate-fade-in-delay-${(index + 1) * 100}`}
+            class={`glass-card rounded-2xl p-4 md:p-6 interactive-hover glow-border group will-change-transform opacity-0 animate-fade-in-delay-${(index + 1) * 100} relative overflow-hidden`}
           >
             <div class={`inline-flex items-center justify-center p-2 md:p-3 rounded-lg mb-3 md:mb-4 ${colorMap[category.color]}`}>
               <IconWrapper name={category.icon} className="w-6 h-6" client:load />
@@ -74,6 +82,14 @@ const colorMap = {
                 </span>
               ))}
             </div>
+
+            {/* Shimmer Effect */}
+            <div class="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none">
+              <div class="shimmer absolute inset-0 opacity-10"></div>
+            </div>
+
+            {/* Gradient Border on Hover */}
+            <div class="absolute inset-0 rounded-2xl border-2 border-transparent bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
           </div>
         ))}
     </div>
