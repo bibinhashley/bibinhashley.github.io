@@ -145,12 +145,6 @@ const Navigation = () => {
                                     </span>
                                 </div>
 
-                                {/* Active indicator dot */}
-                                {activeSection === section.id && (
-                                    <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
-                                        <div className="w-1.5 h-1.5 bg-gradient-to-r from-blue-400 to-purple-400 rounded-full animate-pulse shadow-glow"></div>
-                                    </div>
-                                )}
 
                                 {/* Ripple effect on click */}
                                 <div className="absolute inset-0 rounded-2xl overflow-hidden pointer-events-none">
