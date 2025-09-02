@@ -4,7 +4,7 @@ export interface Props {
   description?: string;
 }
 
-const { title, description = "Bibin Hashley O P - Expert Python AI Developer & Kotlin Backend Developer with 4+ years experience in AI/ML, API development, and scalable backend systems. Based in Kozhikode, Kerala, India." } = Astro.props;
+const { title, description = "Bibin Hashley O P - Senior Python AI Developer specializing in machine learning, automation scripting, and Kotlin development. 4+ years building intelligent systems." } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -22,6 +22,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <!-- Icons -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico" />
 
     
     <!-- DNS Prefetch and Preconnect -->
@@ -50,12 +53,13 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <!-- SEO Meta Tags -->
     <meta name="author" content="Bibin Hashley O P" />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-    <meta name="keywords" content="Bibin Hashley, Python AI Developer, Kotlin Backend Developer, Machine Learning Engineer, AI/ML Developer, Backend Developer, API Development, Flask, FastAPI, OpenAI GPT, ChatGPT Integration, Python Developer, Kotlin Developer, Software Engineer, Portfolio, Kozhikode, Kerala, India, Full Stack Developer, Data Science, scikit-learn, NumPy, Pandas, Docker, GCP, Zabbix Monitoring, Automation, CI/CD" />
+    <meta name="keywords" content="Bibin Hashley O P, Python AI Developer, Machine Learning Developer, Automation Expert, Kotlin Developer, Python Scripting, AI Development, OpenAI GPT Integration, Flask Developer, FastAPI, Backend Development, Software Engineer, API Development, Python Programming, ML Engineering, Artificial Intelligence, Data Science, Kerala Developer, Kozhikode, Calicut" />
     <meta name="language" content="English" />
     <meta name="revisit-after" content="7 days" />
     <meta name="theme-color" content="#1e40af" />
+    <meta property="og:site_name" content="Bibin Hashley O P | Python AI Developer" />
+    <meta name="application-name" content="Bibin Hashley O P | Python AI Developer" />
     <meta name="msapplication-TileColor" content="#1e40af" />
-    <meta name="application-name" content="Bibin Hashley Portfolio" />
     <meta name="apple-mobile-web-app-title" content="Bibin Hashley" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -68,17 +72,17 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:image" content="https://bibinhashley.github.io/favicon.svg" />
-    <meta property="og:image:alt" content="Bibin Hashley O P - Python AI Developer & Kotlin Backend Developer" />
-    <meta property="og:site_name" content="Bibin Hashley Portfolio" />
+    <meta property="og:image" content="https://bibinhashley.github.io/og-image.png" />
+    <meta property="og:image:alt" content="Bibin Hashley O P - Python AI Developer & Automation Expert Portfolio" />
+    <meta property="og:site_name" content="Bibin Hashley O P" />
     <meta property="og:locale" content="en_US" />
     
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content="https://bibinhashley.github.io/favicon.svg" />
-    <meta name="twitter:image:alt" content="Bibin Hashley O P - Python AI Developer & Kotlin Backend Developer" />
+    <meta name="twitter:image" content="https://bibinhashley.github.io/og-image.png" />
+    <meta name="twitter:image:alt" content="Bibin Hashley O P - Python AI Developer & Automation Expert Portfolio" />
     <meta name="twitter:creator" content="@bibinhashley" />
     <meta name="twitter:site" content="@bibinhashley" />
     
@@ -102,10 +106,10 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         "@type": "Person",
         "name": "Bibin Hashley O P",
         "alternateName": "Bibin Hashley",
-        "jobTitle": ["Python AI Developer", "Kotlin Backend Developer", "Software Engineer"],
-        "description": "Experienced Python AI Developer and Kotlin Backend Developer with 4+ years of expertise in building scalable systems, AI-powered applications, and backend services.",
+        "jobTitle": ["Senior Python AI Developer", "Machine Learning Engineer", "Automation Specialist"],
+        "description": "Senior Python AI Developer with 4+ years of expertise in machine learning, intelligent automation, and scalable AI systems development.",
         "url": "https://bibinhashley.github.io",
-        "image": "https://bibinhashley.github.io/favicon.svg",
+        "image": "https://bibinhashley.github.io/og-image.png",
         "email": "bibinhashley@gmail.com",
         "telephone": "+91-XXXXXXXXXX",
         "sameAs": [
@@ -124,36 +128,35 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
           "name": "Freelance Developer"
         },
         "knowsAbout": [
-          "Python Programming",
+          "Python AI Development",
+          "Machine Learning Engineering",
+          "Intelligent Automation",
+          "Python Scripting",
           "Kotlin Development",
-          "Artificial Intelligence",
-          "Machine Learning",
           "OpenAI GPT Integration",
-          "ChatGPT API Development",
+          "Natural Language Processing",
           "Flask Framework",
           "FastAPI Development",
           "Backend Development",
           "API Development",
-          "Database Design",
-          "ClickHouse Database",
-          "PostgreSQL",
+          "Database Systems",
           "Cloud Computing",
-          "Google Cloud Platform",
           "Docker Containerization",
-          "CI/CD Pipelines",
-          "Zabbix Monitoring",
           "Software Architecture",
           "Data Science",
           "scikit-learn",
+          "TensorFlow",
+          "PyTorch",
           "NumPy",
           "Pandas",
-          "Automation Tools"
+          "Automation Scripting"
         ],
         "hasOccupation": {
           "@type": "Occupation",
-          "name": "Python AI Developer & Kotlin Backend Developer",
+          "name": "Senior Python AI Developer & Machine Learning Engineer",
           "occupationalCategory": "15-1252.00",
-          "skills": "Python, Kotlin, AI/ML, OpenAI GPT, Flask, FastAPI, Backend Development, API Design, Docker, GCP, Zabbix, scikit-learn, NumPy, Pandas, ClickHouse, PostgreSQL"
+          "skills": "Python AI Development, Machine Learning Engineering, Intelligent Automation, Python Scripting, Kotlin Development, OpenAI GPT Integration, Flask, FastAPI, Backend Development, API Design, Data Science",
+          "workLocation": "Kerala, India"
         }
       }
     </script>
@@ -163,9 +166,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
-        "name": "Bibin Hashley Portfolio",
+        "name": "Bibin Hashley O P | Python AI Developer Portfolio",
         "url": "https://bibinhashley.github.io",
-        "description": "Professional portfolio of Bibin Hashley O P - Python AI Developer & Kotlin Backend Developer",
+        "description": "Professional portfolio of Bibin Hashley O P - Senior Python AI Developer & Machine Learning Engineer",
         "author": {
           "@type": "Person",
           "name": "Bibin Hashley O P"
@@ -192,20 +195,22 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         },
         "publisher": {
           "@type": "Organization",
-          "name": "Bibin Hashley Portfolio",
+          "name": "Bibin Hashley O P",
           "url": "https://bibinhashley.github.io"
         },
         "about": [
           "Python AI Development",
-          "Kotlin Backend Development", 
+          "Machine Learning Engineering",
+          "Intelligent Automation",
+          "Python Scripting",
+          "Kotlin Development",
           "OpenAI GPT Integration",
-          "FastAPI Development",
-          "Machine Learning",
+          "Backend Development",
           "API Development"
         ],
         "isPartOf": {
           "@type": "WebSite",
-          "name": "Bibin Hashley Portfolio",
+          "name": "Bibin Hashley O P | Python AI Developer Portfolio",
           "url": "https://bibinhashley.github.io"
         }
       }
