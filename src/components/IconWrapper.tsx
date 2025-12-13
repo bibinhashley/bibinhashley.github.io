@@ -1,8 +1,9 @@
-import { 
+import {
   Code2, Server, Database, Cloud, Cpu, Monitor,
   Bot, Zap, Shield, Globe, Search,
   Brain, Code,
-  Mail, Github, Linkedin, MapPin
+  Mail, Github, Linkedin, MapPin,
+  ShoppingBag
 } from 'lucide-react';
 
 interface IconWrapperProps {
@@ -28,7 +29,8 @@ const iconMap = {
   Mail,
   Github,
   Linkedin,
-  MapPin
+  MapPin,
+  ShoppingBag
 };
 
 const IconWrapper = ({ name, className = "w-6 h-6", size }: IconWrapperProps) => {
