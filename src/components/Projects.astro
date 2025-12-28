@@ -1,86 +1,7 @@
 ---
-import { Folder, ExternalLink, Star } from 'lucide-react';
-
-const projects = [
-  {
-    name: "hakata-couture",
-    visibility: "public",
-    type: "Full-stack SaaS / E-commerce",
-    description: "Luxury e-commerce platform for custom-fitted ethnic wear with personalized measurements and order workflows.",
-    engineering_highlights: {
-      focus: "Full-stack integration with backend-first architecture",
-      challenges: ["Handling dynamic sizing data", "Maintaining consistency between frontend and backend state"]
-    },
-    tech_stack: ["Next.js", "React", "Supabase", "Tailwind CSS"],
-    link: "https://www.hakatacouture.com"
-  },
-  {
-    name: "keyword-enrichment-tool",
-    visibility: "private",
-    type: "AI Content System",
-    description: "Production-grade AI-powered keyword enrichment system using OpenAI GPT models to optimize SEO content.",
-    engineering_highlights: {
-      architecture: "Async Flask/FastAPI services with OpenAI API integration",
-      scale: "Supports multilingual content generation (9+ languages)"
-    },
-    tech_stack: ["Python", "OpenAI APIs", "Flask", "NLP"]
-  },
-  {
-    name: "ai-editor-backend",
-    visibility: "private",
-    type: "AI SaaS Backend",
-    description: "Backend system powering a customizable AI content editor with multiple AI features like rewriting and summarization.",
-    engineering_highlights: {
-      architecture: "Modular Flask + FastAPI backend with service separation",
-      features: ["User-specific personalization", "Multiple AI pipelines per request"]
-    },
-    tech_stack: ["Python", "FastAPI", "Flask", "GPT-4"]
-  },
-  {
-    name: "qa-automation-framework",
-    visibility: "private",
-    type: "Developer Tooling",
-    description: "Comprehensive QA automation framework built with Kotlin for testing backend services and integrations.",
-    engineering_highlights: {
-      focus: "Test reliability and service isolation",
-      features: ["Mocked external services", "Automated regression testing"]
-    },
-    tech_stack: ["Kotlin", "JUnit", "WireMock", "Zabbix"]
-  },
-  {
-    name: "restful-ml-apis",
-    visibility: "private",
-    type: "ML Platform / APIs",
-    description: "High-performance machine learning APIs built with FastAPI, designed for real-time inference and scalable deployment.",
-    engineering_highlights: {
-      architecture: "Stateless FastAPI services with Dockerized deployment",
-      focus: "Low-latency inference"
-    },
-    tech_stack: ["FastAPI", "Machine Learning", "Docker", "GCP"]
-  },
-  {
-    name: "iab-category-classifier",
-    visibility: "private",
-    type: "AI Classification System",
-    description: "AI-powered website categorization system based on IAB taxonomy using fine-tuned ChatGPT models.",
-    engineering_highlights: {
-      ml_focus: ["Prompt tuning", "Model fine-tuning", "Text classification"],
-      use_case: "Digital marketing content classification"
-    },
-    tech_stack: ["FastAPI", "ChatGPT", "Fine-tuning", "NLP"]
-  },
-  {
-    name: "freshdesk-youtrack-integration",
-    visibility: "private",
-    type: "SaaS Integration",
-    description: "Bi-directional integration between Freshdesk and YouTrack enabling seamless synchronization.",
-    engineering_highlights: {
-      features: ["Ticket ↔ issue linking", "Comment synchronization"],
-      architecture: "Event-driven workflows using REST APIs and webhooks"
-    },
-    tech_stack: ["TypeScript", "YouTrack Apps", "Freshdesk Apps", "REST APIs"]
-  }
-];
+import { Github, Folder, ArrowRight, ExternalLink } from 'lucide-react';
+import { projects } from '../data/projects';
+import SpotlightCard from './SpotlightCard';
 ---
 
 <section id="projects" class="py-20 md:py-32 px-4 relative overflow-hidden">
@@ -89,58 +10,50 @@ const projects = [
       <h2 class="text-3xl md:text-5xl font-bold font-mono text-white">
         <span class="text-accent-500">./</span>Projects
       </h2>
-      <div class="text-sm font-mono text-gray-500 hidden md:block">
-        Showing 7 repositories
-      </div>
+      <div class="hidden md:block h-px bg-gray-800 flex-grow ml-8"></div>
     </div>
 
-    <!-- Project Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projects-container">
       {projects.map((project, index) => (
-        <div class="card bg-[#0d1117] border border-gray-800 rounded-lg p-6 hover:border-gray-600 transition-all duration-300 group scroll-animate flex flex-col h-full relative overflow-hidden" style={`animation-delay: ${index * 100}ms`}>
+        <div 
+          class="project-card group relative bg-[#0f141c]/80 border border-gray-800 rounded-xl p-6 h-full overflow-hidden transition-all duration-300 hover:border-gray-700 scroll-animate backdrop-blur-sm"
+          style={`animation-delay: ${index * 100}ms`}
+        >
           {/* Spotlight Gradient */}
           <div 
             class="pointer-events-none absolute -inset-px opacity-0 transition duration-300 group-hover:opacity-100"
             style="background: radial-gradient(600px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(168, 85, 247, 0.15), transparent 40%);"
           ></div>
 
-          <div class="flex items-center justify-between mb-2 relative z-10">
-            <div class="flex items-center gap-2 text-blue-400">
-              <Folder size={20} />
-              <span class="font-mono font-semibold text-sm">{project.name}</span>
+          <div class="relative z-10 flex flex-col h-full">
+            <div class="flex justify-between items-start mb-6">
+              <div class="p-3 rounded-lg bg-[#1e293b]/50 border border-gray-700/50 text-accent-400 group-hover:text-accent-300 transition-colors">
+                <project.icon size={28} />
+              </div>
+              <div class="flex gap-2">
+                {project.link && project.link !== "#" && (
+                  <a href={project.link} target="_blank" rel="noopener noreferrer" class="p-2 rounded-full bg-gray-800 text-gray-400 hover:text-white hover:bg-gray-700 transition-all border border-transparent hover:border-gray-600" aria-label={`Visit ${project.title} live site`}>
+                    <ExternalLink size={18} />
+                  </a>
+                )}
+                 <a href={`/projects/${project.id}`} class="p-2 rounded-full bg-gray-800 text-gray-400 hover:text-white hover:bg-gray-700 transition-all border border-transparent hover:border-gray-600" aria-label={`View ${project.title} details`}>
+                  <ArrowRight size={18} />
+                </a>
+              </div>
             </div>
-            <span class="text-xs px-2 py-0.5 rounded-full border border-gray-700 text-gray-500 font-mono">
-              {project.visibility === 'private' ? 'Private' : 'Public'}
-            </span>
-          </div>
-          
-          <div class="text-xs font-mono text-gray-500 mb-4 relative z-10">{project.type}</div>
 
-          <p class="text-gray-400 text-sm mb-6 leading-relaxed font-mono relative z-10">
-            {project.description}
-          </p>
-
-          <div class="mt-auto relative z-10">
-            <div class="flex flex-wrap gap-2 mb-4">
-              {project.tech_stack.map((tech) => (
-                <div class="flex items-center gap-1 text-xs text-gray-500 font-mono">
-                  <div class="w-2 h-2 rounded-full bg-accent-500/50"></div>
-                  {tech}
-                </div>
+            <a href={`/projects/${project.id}`} class="block mb-4">
+                 <h3 class="text-xl font-bold text-white group-hover:text-primary-400 transition-colors font-mono">{project.title}</h3>
+            </a>
+            
+            <div class="flex flex-wrap gap-2 mt-auto">
+              {project.tech.map((t) => (
+                <span class="text-xs px-2 py-1 rounded bg-[#1e293b]/50 text-gray-300 border border-gray-700/50 font-mono">
+                  {t}
+                </span>
               ))}
             </div>
 
-            {project.link && (
-              <a
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="inline-flex items-center gap-2 text-xs text-white hover:text-accent-400 font-mono transition-colors border-t border-gray-800 pt-3 w-full"
-              >
-                <ExternalLink size={14} />
-                <span>View Deployment</span>
-              </a>
-            )}
           </div>
         </div>
       ))}
@@ -149,6 +62,10 @@ const projects = [
 </section>
 
 <style>
+  .project-card:hover::before {
+    opacity: 1;
+  }
+
   .scroll-animate {
     opacity: 0;
     transform: translateY(20px);
@@ -167,7 +84,7 @@ const projects = [
   
   if (container) {
     container.onmousemove = e => {
-      for(const card of container.getElementsByClassName("card")) {
+      for(const card of container.getElementsByClassName("project-card")) {
         const rect = card.getBoundingClientRect(),
               x = e.clientX - rect.left,
               y = e.clientY - rect.top;
@@ -195,4 +112,3 @@ const projects = [
     observer.observe(el);
   });
 </script>
-

@@ -16,27 +16,49 @@ const Navigation = () => {
         { id: 'contact', label: './contact', command: 'ssh connect' }
     ];
 
+    const [isHome, setIsHome] = useState(true);
+
+    useEffect(() => {
+        setIsHome(window.location.pathname === '/');
+        if (window.location.pathname.includes('/projects/')) {
+            setActiveSection('projects');
+        }
+    }, []);
+
     useEffect(() => {
         const handleScroll = () => {
-            const scrollPosition = window.scrollY + 100;
+            // Always check scroll position for navbar styling
             setScrolled(window.scrollY > 50);
 
-            sections.forEach(section => {
-                const element = document.getElementById(section.id);
-                if (element) {
-                    const { offsetTop, offsetHeight } = element;
-                    if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-                        setActiveSection(section.id);
+            // Only update active section on home page
+            if (isHome) {
+                const scrollPosition = window.scrollY + 100;
+                sections.forEach(section => {
+                    const element = document.getElementById(section.id);
+                    if (element) {
+                        const { offsetTop, offsetHeight } = element;
+                        if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+                            setActiveSection(section.id);
+                        }
                     }
-                }
-            });
+                });
+            }
         };
 
         window.addEventListener('scroll', handleScroll, { passive: true });
+
+        // Initial check
+        handleScroll();
+
         return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    }, [isHome]);
 
     const scrollToSection = (sectionId: string) => {
+        if (!isHome) {
+            window.location.href = `/#${sectionId}`;
+            return;
+        }
+
         const element = document.getElementById(sectionId);
         if (element) {
             const offset = 80;

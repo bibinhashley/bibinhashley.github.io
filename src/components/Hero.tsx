@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Terminal, Cpu, Database, Network, Github, Linkedin } from 'lucide-react';
+import { Terminal, Cpu, Database, Network, Github, Linkedin, X, Minus } from 'lucide-react';
 import Magnetic from './Magnetic';
 
 const Hero = () => {
@@ -59,6 +59,9 @@ const Hero = () => {
   }
 }`;
 
+  const [isMinimized, setIsMinimized] = useState(false);
+  const [isClosed, setIsClosed] = useState(false);
+
   return (
     <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden px-4 md:px-8 pt-20">
 
@@ -114,7 +117,7 @@ const Hero = () => {
                 href="#contact"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="px-6 py-3 bg-transparent border border-gray-700 hover:border-gray-500 text-gray-300 hover:text-white font-mono rounded transition-colors block" // added block to ensure anchor takes full width of magnetic wrapper if needed
+                className="px-6 py-3 bg-transparent border border-gray-700 hover:border-gray-500 text-gray-300 hover:text-white font-mono rounded transition-colors block"
               >
                 Contact Me
               </motion.a>
@@ -132,58 +135,95 @@ const Hero = () => {
                 <Linkedin size={24} />
               </a>
             </Magnetic>
+
+            {/* Reopen Terminal Button (only visible if closed) */}
+            {isClosed && (
+              <motion.button
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                onClick={() => setIsClosed(false)}
+                className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-800/50 border border-gray-700 text-xs text-gray-400 hover:text-white hover:bg-gray-800 transition-all ml-auto md:ml-0"
+              >
+                <Terminal size={12} />
+                Reopen Terminal
+              </motion.button>
+            )}
           </div>
         </motion.div>
 
         {/* Right Column: Code Editor Visual - Hidden on Mobile/Tablet */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative hidden lg:block"
-        >
+        <div className="relative hidden lg:block h-[400px] flex items-center">
+          {/* Added h-[400px] and flex items-center to reserve space so layout doesn't jump when closed */}
 
+          {!isClosed && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.5 }}
+              className="w-full"
+            >
 
-          {/* Code Window */}
-          <div className="glass-panel rounded-lg overflow-hidden border border-gray-800 bg-[#0d1117]/90 shadow-2xl">
-            {/* Window Header */}
-            <div className="bg-gray-900/50 px-4 py-3 flex items-center justify-between border-b border-gray-800">
-              <div className="flex gap-2">
-                <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
-                <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-                <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
+              {/* Code Window */}
+              <div className={`glass-panel rounded-lg overflow-hidden border border-gray-800 bg-[#0d1117]/90 shadow-2xl transition-all duration-300 ${isMinimized ? 'h-auto' : ''}`}>
+                {/* Window Header */}
+                <div
+                  className="bg-gray-900/50 px-4 py-3 flex items-center justify-between border-b border-gray-800 cursor-pointer"
+                  onDoubleClick={() => setIsMinimized(!isMinimized)}
+                >
+                  <div className="flex gap-2 group">
+                    <button
+                      onClick={(e) => { e.stopPropagation(); setIsClosed(true); }}
+                      className="w-3 h-3 rounded-full bg-[#FF5F56] hover:bg-[#FF5F56]/80 flex items-center justify-center transition-colors"
+                      aria-label="Close"
+                    >
+                      <X size={10} className="text-[#4c0002] opacity-0 group-hover:opacity-100 transition-opacity" strokeWidth={3} />
+                    </button>
+                    <button
+                      onClick={(e) => { e.stopPropagation(); setIsMinimized(!isMinimized); }}
+                      className="w-3 h-3 rounded-full bg-[#FFBD2E] hover:bg-[#FFBD2E]/80 flex items-center justify-center transition-colors"
+                      aria-label="Minimize"
+                    >
+                      <Minus size={10} className="text-[#995700] opacity-0 group-hover:opacity-100 transition-opacity" strokeWidth={3} />
+                    </button>
+                  </div>
+                  <div className="text-xs text-gray-500 font-mono">developer.py</div>
+                </div>
+
+                {/* Code Content - Collapsible */}
+                <motion.div
+                  initial={false}
+                  animate={{ height: isMinimized ? 0 : 'auto', opacity: isMinimized ? 0 : 1 }}
+                  transition={{ duration: 0.3, ease: 'easeInOut' }}
+                  className="overflow-hidden"
+                >
+                  <div className="p-6 font-mono text-sm md:text-base leading-relaxed overflow-x-auto">
+                    <pre>
+                      <code>
+                        <span className="text-blue-400">class</span> <span className="text-yellow-400">Developer</span><span className="text-white">:</span><br />
+                        <span className="text-white">    </span><span className="text-blue-400">def</span> <span className="text-yellow-200">__init__</span><span className="text-white">(</span><span className="text-purple-400">self</span><span className="text-white">):</span><br />
+                        <span className="text-white">        </span><span className="text-purple-400">self</span><span className="text-white">.name = </span><span className="code-string">"Bibin Hashley"</span><br />
+                        <span className="text-white">        </span><span className="text-purple-400">self</span><span className="text-white">.stack = [</span><span className="code-string">"Python"</span><span className="text-white">, </span><span className="code-string">"AI"</span><span className="text-white">, </span><span className="code-string">"Backend"</span><span className="text-white">]</span><br />
+                        <span className="text-white">        </span><span className="text-purple-400">self</span><span className="text-white">.focus = </span><span className="code-string">"Scalability"</span><br /><br />
+                        <span className="text-white">    </span><span className="text-blue-400">def</span> <span className="text-yellow-200">build_future</span><span className="text-white">(</span><span className="text-purple-400">self</span><span className="text-white">):</span><br />
+                        <span className="text-white">        </span><span className="code-keyword">return</span> <span className="text-purple-400">self</span><span className="text-white">.innovate()</span>
+                      </code>
+                    </pre>
+                  </div>
+
+                  {/* Status Bar */}
+                  <div className="bg-gray-900/50 px-4 py-2 border-t border-gray-800 flex justify-between items-center text-xs text-gray-500 font-mono">
+                    <div className="flex items-center gap-3">
+                      <span className="flex items-center gap-1"><Cpu size={12} /> CPU: 12%</span>
+                      <span className="flex items-center gap-1"><Database size={12} /> MEM: 34%</span>
+                    </div>
+                    <div>Ln 12, Col 34</div>
+                  </div>
+                </motion.div>
               </div>
-              <div className="text-xs text-gray-500 font-mono">developer.config.ts</div>
-            </div>
-
-            {/* Code Content */}
-            <div className="p-6 font-mono text-sm md:text-base leading-relaxed overflow-x-auto">
-              <pre>
-                <code>
-                  <span className="code-keyword">class</span> <span className="text-yellow-400">Developer</span> <span className="text-white">{`{`}</span><br />
-                  <span className="text-white">  </span><span className="code-keyword">constructor</span><span className="text-white">() {`{`}</span><br />
-                  <span className="text-white">    </span><span className="text-purple-400">this</span><span className="text-white">.name = </span><span className="code-string">"Bibin Hashley"</span><span className="text-white">;</span><br />
-                  <span className="text-white">    </span><span className="text-purple-400">this</span><span className="text-white">.stack = [</span><span className="code-string">"Python"</span><span className="text-white">, </span><span className="code-string">"AI"</span><span className="text-white">, </span><span className="code-string">"Backend"</span><span className="text-white">];</span><br />
-                  <span className="text-white">    </span><span className="text-purple-400">this</span><span className="text-white">.focus = </span><span className="code-string">"Scalability"</span><span className="text-white">;</span><br />
-                  <span className="text-white">  {`}`}</span><br /><br />
-                  <span className="text-white">  </span><span className="code-function">buildFuture</span><span className="text-white">() {`{`}</span><br />
-                  <span className="text-white">    </span><span className="code-keyword">return</span> <span className="text-purple-400">this</span><span className="text-blue-400">.innovate</span><span className="text-white">();</span><br />
-                  <span className="text-white">  {`}`}</span><br />
-                  <span className="text-white">{`}`}</span>
-                </code>
-              </pre>
-            </div>
-
-            {/* Status Bar */}
-            <div className="bg-gray-900/50 px-4 py-2 border-t border-gray-800 flex justify-between items-center text-xs text-gray-500 font-mono">
-              <div className="flex items-center gap-3">
-                <span className="flex items-center gap-1"><Cpu size={12} /> CPU: 12%</span>
-                <span className="flex items-center gap-1"><Database size={12} /> MEM: 34%</span>
-              </div>
-              <div>Ln 12, Col 34</div>
-            </div>
-          </div>
-        </motion.div>
+            </motion.div>
+          )}
+        </div>
       </div>
     </section>
   );

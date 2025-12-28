@@ -1,12 +1,18 @@
 ---
 import InteractiveBackground from '../components/InteractiveBackground.tsx';
+import '../styles/global.css';
 
 export interface Props {
   title: string;
   description?: string;
+  keywords?: string;
 }
 
-const { title = "Bibin Hashley | Expert Python AI Developer & ML Engineer | Kerala, India", description = "Looking for the best Python AI Developer in Kerala? Bibin Hashley specializes in building scalable AI agents, machine learning systems, and backend automation using Python & Kotlin." } = Astro.props;
+const { 
+  title = "Bibin Hashley | Expert Python AI Developer & ML Engineer | Kerala, India", 
+  description = "Bibin Hashley is a Senior Python AI Developer in Kerala, specializing in building scalable AI agents, machine learning systems, and backend automation using Python & Kotlin.",
+  keywords = "Bibin Hashley, Python AI Developer Kerala, AI content automation backend, OpenAI API integration backend, FastAPI AI backend, SEO automation using AI, SaaS integration developer, Python Backend Developer India, Freelance Machine Learning Engineer Kerala, AI Automation Specialist India"
+} = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -55,7 +61,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <!-- SEO Meta Tags -->
     <meta name="author" content="Bibin Hashley O P" />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
-    <meta name="keywords" content="Best Python Developer Kerala, Python AI Developer India, Freelance Machine Learning Engineer Kerala, Python Expert Calicut, AI Automation Specialist India, Bibin Hashley, Python Scripting, OpenAI GPT Integration, Flask, FastAPI, Backend Development" />
+    <meta name="keywords" content={keywords} />
     <meta name="language" content="English" />
     <meta name="revisit-after" content="7 days" />
     <meta name="theme-color" content="#1e40af" />
@@ -219,6 +225,27 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     </script>
     
     <title>{title}</title>
+
+    {/* JSON-LD Schema for Person Authority */}
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Bibin Hashley",
+        "jobTitle": "Python AI Developer & ML Engineer",
+        "url": "https://bibinhashley.github.io",
+        "sameAs": [
+          "https://github.com/bibinhashley",
+          "https://linkedin.com/in/bibinhashley"
+        ],
+        "knowsAbout": ["Python", "Artificial Intelligence", "FastAPI", "Machine Learning", "Backend Development", "Automation", "LLMs"],
+        "address": {
+          "@type": "PostalAddress",
+          "addressRegion": "Kerala",
+          "addressCountry": "India"
+        }
+      }
+    </script>
   </head>
   <body class="bg-[#0a0a0a] text-white overflow-x-hidden relative font-sans antialiased selection:bg-cyan-500/30">
     <div class="fixed inset-0 -z-10 h-full w-full bg-[#0a0a0a] bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]"></div>

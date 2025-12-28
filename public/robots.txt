@@ -5,7 +5,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://bibinhashley.github.io/sitemap.xml
+Sitemap: https://bibinhashley.github.io/sitemap-index.xml
 
 # Crawl-delay for respectful crawling
 Crawl-delay: 1
