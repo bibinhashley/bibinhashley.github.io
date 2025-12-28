@@ -7,7 +7,8 @@ export const projects = [
     description: "Case study on building a luxury custom-fit e-commerce platform with personalized measurements, order workflows, and backend-first architecture.",
     seo: {
       title: "Custom-Fit E-commerce Platform | Hakata Couture Case Study",
-      description: "Case study on building a luxury custom-fit e-commerce platform with personalized measurements, order workflows, and backend-first architecture."
+      description: "Case study on building a luxury custom-fit e-commerce platform with personalized measurements, order workflows, and backend-first architecture.",
+      keywords: "backend automation engineer, e-commerce backend architecture, tailored clothing platform, custom fit algorithms, nextjs ecommerce case study"
     },
     tech: ["Next.js", "React", "Supabase", "Tailwind CSS"],
     icon: ShoppingBag,
@@ -43,7 +44,8 @@ Enabled a scalable and maintainable custom-fit ordering experience suitable for 
     description: "Production-grade AI system for multilingual keyword enrichment using OpenAI APIs with retry handling and token optimization.",
     seo: {
       title: "AI Keyword Enrichment Tool | SEO Automation Case Study",
-      description: "Production-grade AI system for multilingual keyword enrichment using OpenAI APIs with retry handling and token optimization."
+      description: "Production-grade AI system for multilingual keyword enrichment using OpenAI APIs with retry handling and token optimization.",
+      keywords: "ai content automation, seo automation using ai, keyword enrichment ai, llm content systems, openai api backend integration"
     },
     tech: ["Python", "Flask", "FastAPI", "OpenAI APIs", "NLP"],
     icon: Database,
@@ -79,7 +81,8 @@ Significantly reduced manual SEO effort while enabling large-scale, automated ke
     description: "Backend system powering an AI content editor with outlining, rewriting, summarization, and personalization features.",
     seo: {
       title: "AI Content Editor Backend | Case Study",
-      description: "Backend system powering an AI content editor with outlining, rewriting, summarization, and personalization features."
+      description: "Backend system powering an AI content editor with outlining, rewriting, summarization, and personalization features.",
+      keywords: "ai powered backend systems, python ai engineer, openai api integration backend, ai content editor architecture, flask backend developer"
     },
     tech: ["Python", "FastAPI", "Flask", "GPT-4"],
     icon: Cpu,
@@ -115,7 +118,8 @@ Delivered a flexible backend capable of powering a full-featured AI content crea
     description: "Case study on building a Kotlin-based QA automation framework for backend services and integrations.",
     seo: {
       title: "QA Automation Framework | Backend Testing Case Study",
-      description: "Case study on building a Kotlin-based QA automation framework for backend services and integrations."
+      description: "Case study on building a Kotlin-based QA automation framework for backend services and integrations.",
+      keywords: "qa automation backend, kotlin qa automation, backend testing framework, api testing automation, integration testing strategies"
     },
     tech: ["Kotlin", "JUnit", "WireMock", "Zabbix"],
     icon: TestTube,
@@ -151,7 +155,8 @@ Improved backend stability and reduced regression-related production issues.
     description: "Design and deployment of low-latency machine learning APIs using FastAPI and Docker on GCP.",
     seo: {
       title: "FastAPI Machine Learning APIs | Case Study",
-      description: "Design and deployment of low-latency machine learning APIs using FastAPI and Docker on GCP."
+      description: "Design and deployment of low-latency machine learning APIs using FastAPI and Docker on GCP.",
+      keywords: "python backend engineer, fastapi python developer, machine learning api, docker containerization, gcp cloud deployment"
     },
     tech: ["FastAPI", "Machine Learning", "Docker", "GCP"],
     icon: Server,
@@ -187,7 +192,8 @@ Enabled reliable real-time ML inference with predictable performance.
     description: "AI-powered website categorization system using IAB taxonomy and fine-tuned language models.",
     seo: {
       title: "IAB Content Classification System | AI Case Study",
-      description: "AI-powered website categorization system using IAB taxonomy and fine-tuned language models."
+      description: "AI-powered website categorization system using IAB taxonomy and fine-tuned language models.",
+      keywords: "ai systems engineer, text classification ai, iab taxonomy, nlp classification python, fine tuned ai models"
     },
     tech: ["FastAPI", "ChatGPT", "Fine-tuning", "NLP"],
     icon: Tag,
@@ -223,7 +229,8 @@ Delivered scalable and accurate content classification aligned with IAB standard
     description: "Case study on building a bi-directional integration between Freshdesk and YouTrack for workflow synchronization.",
     seo: {
       title: "Freshdesk YouTrack Integration | SaaS Workflow Automation",
-      description: "Case study on building a bi-directional integration between Freshdesk and YouTrack for workflow synchronization."
+      description: "Case study on building a bi-directional integration between Freshdesk and YouTrack for workflow synchronization.",
+      keywords: "freshdesk app developer, youtrack app developer, saas integration engineer, customer support workflow automation, third party api integration python"
     },
     tech: ["TypeScript", "YouTrack Apps", "Freshdesk Apps", "REST APIs", "OAuth"],
     icon: Share2,

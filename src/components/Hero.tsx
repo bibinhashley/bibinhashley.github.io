@@ -87,9 +87,9 @@ const Hero = () => {
 
 
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-mono text-white mb-6 leading-tight">
-            Python AI Developer <br />
+            Python & <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent-400 to-primary-400">
-              & ML Engineer
+              AI Systems Engineer
             </span>
           </h1>
 
