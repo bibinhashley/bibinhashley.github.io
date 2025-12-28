@@ -4,49 +4,27 @@ import Navigation from '../components/Navigation.tsx';
 import Hero from '../components/Hero.tsx';
 import About from '../components/About.astro';
 import Experience from '../components/Experience.astro';
-import Skills from '../components/Skills.astro';
 import Projects from '../components/Projects.astro';
-import Blog from '../components/Blog.astro';
+import Skills from '../components/Skills.astro';
 import Contact from '../components/Contact.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 ---
 
-<Layout 
+<Layout
   title="Bibin Hashley O P | Python AI Developer & Automation Expert | Portfolio"
   description="Bibin Hashley O P - Senior Python AI Developer specializing in machine learning, automation scripting, and Kotlin development. 4+ years building intelligent systems."
 >
   <Navigation client:load />
-  
+
   <main>
-    <section id="hero" aria-label="Hero section">
-      <Hero client:load />
-    </section>
-    
-    <section id="about" class="pt-4 md:pt-8" aria-label="About section">
-      <About />
-    </section>
-    
-    <section id="experience" class="pt-4 md:pt-8" aria-label="Experience section">
-      <Experience />
-    </section>
-    
-    <section id="skills" class="pt-4 md:pt-8" aria-label="Skills section">
-      <Skills />
-    </section>
-    
-    <section id="projects" class="pt-4 md:pt-8" aria-label="Projects section">
-      <Projects />
-    </section>
-    
-    <section id="blog" class="pt-4 md:pt-8" aria-label="Blog section">
-      <Blog />
-    </section>
-    
-    <section id="contact" class="pt-4 md:pt-8" aria-label="Contact section">
-      <Contact />
-    </section>
+    <Hero client:load />
+    <About />
+    <Experience />
+    <Projects />
+    <Skills />
+    <Contact />
   </main>
-  
+
   <Footer />
 </Layout>
