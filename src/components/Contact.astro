@@ -42,20 +42,26 @@ const contactLinks = [
 
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto" id="contact-container">
       {contactLinks.map((link, index) => (
         link.href ? (
           <a
             href={link.href}
             target={link.href.startsWith('mailto:') ? '_self' : '_blank'}
             rel="noopener noreferrer"
-            class="group bg-[#0d1117]/50 border border-gray-800 p-6 rounded-lg hover:border-accent-500/50 hover:bg-[#0d1117] transition-all duration-300 scroll-animate flex items-center gap-4 backdrop-blur-sm"
+            class="card group bg-[#0d1117]/50 border border-gray-800 p-6 rounded-lg hover:border-accent-500/50 hover:bg-[#0d1117] transition-all duration-300 scroll-animate flex items-center gap-4 backdrop-blur-sm relative overflow-hidden"
             style={`animation-delay: ${index * 100}ms`}
           >
-            <div class="p-3 bg-gray-900/80 rounded-lg group-hover:bg-accent-500/10 transition-colors">
+            {/* Spotlight Gradient */}
+            <div 
+              class="pointer-events-none absolute -inset-px opacity-0 transition duration-300 group-hover:opacity-100"
+              style="background: radial-gradient(600px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(168, 85, 247, 0.15), transparent 40%);"
+            ></div>
+
+            <div class="p-3 bg-gray-900/80 rounded-lg group-hover:bg-accent-500/10 transition-colors relative z-10">
               <link.icon size={24} className="text-gray-400 group-hover:text-accent-500 transition-colors" />
             </div>
-            <div class="flex-1 min-w-0">
+            <div class="flex-1 min-w-0 relative z-10">
               <div class="flex items-center justify-between mb-1">
                 <h3 class="font-bold text-white text-sm">{link.label}</h3>
                 <span class="text-[10px] font-mono text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -67,13 +73,19 @@ const contactLinks = [
           </a>
         ) : (
           <div 
-            class="group bg-[#0d1117]/50 border border-gray-800 p-6 rounded-lg scroll-animate flex items-center gap-4 cursor-default backdrop-blur-sm" 
+            class="card group bg-[#0d1117]/50 border border-gray-800 p-6 rounded-lg scroll-animate flex items-center gap-4 cursor-default backdrop-blur-sm relative overflow-hidden" 
             style={`animation-delay: ${index * 100}ms`}
           >
-            <div class="p-3 bg-gray-900/80 rounded-lg">
+            {/* Spotlight Gradient */}
+            <div 
+              class="pointer-events-none absolute -inset-px opacity-0 transition duration-300 group-hover:opacity-100"
+              style="background: radial-gradient(600px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(168, 85, 247, 0.15), transparent 40%);"
+            ></div>
+
+            <div class="p-3 bg-gray-900/80 rounded-lg relative z-10">
               <link.icon size={24} className="text-gray-400" />
             </div>
-            <div class="flex-1 min-w-0">
+            <div class="flex-1 min-w-0 relative z-10">
                <div class="flex items-center justify-between mb-1">
                 <h3 class="font-bold text-white text-sm">{link.label}</h3>
                 <span class="text-[10px] font-mono text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -103,6 +115,22 @@ const contactLinks = [
 </style>
 
 <script>
+  // Mouse movement effect for contact cards
+  const container = document.getElementById("contact-container");
+  
+  if (container) {
+    container.onmousemove = e => {
+      for(const card of container.getElementsByClassName("card")) {
+        const rect = card.getBoundingClientRect(),
+              x = e.clientX - rect.left,
+              y = e.clientY - rect.top;
+
+        (card as HTMLElement).style.setProperty("--mouse-x", `${x}px`);
+        (card as HTMLElement).style.setProperty("--mouse-y", `${y}px`);
+      }
+    };
+  }
+
   const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'

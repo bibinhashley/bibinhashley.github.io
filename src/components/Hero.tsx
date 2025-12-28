@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Terminal, Cpu, Database, Network } from 'lucide-react';
+import { Terminal, Cpu, Database, Network, Github, Linkedin } from 'lucide-react';
 
 const Hero = () => {
   const [typedText, setTypedText] = useState('');
@@ -108,6 +108,15 @@ const Hero = () => {
             >
               Contact Me
             </motion.a>
+          </div>
+
+          <div className="flex gap-6 mt-12 items-center">
+            <a href="https://github.com/bibinhashley" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300">
+              <Github size={24} />
+            </a>
+            <a href="https://linkedin.com/in/bibinhashley" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300">
+              <Linkedin size={24} />
+            </a>
           </div>
         </motion.div>
 

@@ -3,46 +3,82 @@ import { Folder, ExternalLink, Star } from 'lucide-react';
 
 const projects = [
   {
-    title: "hakata-couture",
-    description: "Luxury e-commerce platform for custom-fitted ethnic wear with personalized measurements.",
-    technologies: ["Next.js", "React", "Supabase", "Tailwind"],
-    link: "https://www.hakatacouture.com",
-    private: false
+    name: "hakata-couture",
+    visibility: "public",
+    type: "Full-stack SaaS / E-commerce",
+    description: "Luxury e-commerce platform for custom-fitted ethnic wear with personalized measurements and order workflows.",
+    engineering_highlights: {
+      focus: "Full-stack integration with backend-first architecture",
+      challenges: ["Handling dynamic sizing data", "Maintaining consistency between frontend and backend state"]
+    },
+    tech_stack: ["Next.js", "React", "Supabase", "Tailwind CSS"],
+    link: "https://www.hakatacouture.com"
   },
   {
-    title: "keyword-enrichment-tool",
-    description: "Advanced AI-powered keyword enrichment system using OpenAI's GPT models for content optimization.",
-    technologies: ["Python", "OpenAI", "Flask", "NLP"],
-    link: null,
-    private: true
+    name: "keyword-enrichment-tool",
+    visibility: "private",
+    type: "AI Content System",
+    description: "Production-grade AI-powered keyword enrichment system using OpenAI GPT models to optimize SEO content.",
+    engineering_highlights: {
+      architecture: "Async Flask/FastAPI services with OpenAI API integration",
+      scale: "Supports multilingual content generation (9+ languages)"
+    },
+    tech_stack: ["Python", "OpenAI APIs", "Flask", "NLP"]
   },
   {
-    title: "ai-editor-backend",
-    description: "Custom AI-powered content editor backend with Flask and GPT-4 integration.",
-    technologies: ["Python", "FastAPI", "Flask", "GPT-4"],
-    link: null,
-    private: true
+    name: "ai-editor-backend",
+    visibility: "private",
+    type: "AI SaaS Backend",
+    description: "Backend system powering a customizable AI content editor with multiple AI features like rewriting and summarization.",
+    engineering_highlights: {
+      architecture: "Modular Flask + FastAPI backend with service separation",
+      features: ["User-specific personalization", "Multiple AI pipelines per request"]
+    },
+    tech_stack: ["Python", "FastAPI", "Flask", "GPT-4"]
   },
   {
-    title: "qa-automation-framework",
-    description: "Comprehensive Quality Assurance automation framework built with Kotlin.",
-    technologies: ["Kotlin", "JUnit", "WireMock", "Zabbix"],
-    link: null,
-    private: true
+    name: "qa-automation-framework",
+    visibility: "private",
+    type: "Developer Tooling",
+    description: "Comprehensive QA automation framework built with Kotlin for testing backend services and integrations.",
+    engineering_highlights: {
+      focus: "Test reliability and service isolation",
+      features: ["Mocked external services", "Automated regression testing"]
+    },
+    tech_stack: ["Kotlin", "JUnit", "WireMock", "Zabbix"]
   },
   {
-    title: "restful-ml-apis",
-    description: "High-performance machine learning APIs built with FastAPI, featuring real-time model inference.",
-    technologies: ["FastAPI", "ML", "Docker", "GCP"],
-    link: null,
-    private: true
+    name: "restful-ml-apis",
+    visibility: "private",
+    type: "ML Platform / APIs",
+    description: "High-performance machine learning APIs built with FastAPI, designed for real-time inference and scalable deployment.",
+    engineering_highlights: {
+      architecture: "Stateless FastAPI services with Dockerized deployment",
+      focus: "Low-latency inference"
+    },
+    tech_stack: ["FastAPI", "Machine Learning", "Docker", "GCP"]
   },
   {
-    title: "iab-category-classifier",
-    description: "AI-powered website analyzer categorization using fine-tuned ChatGPT models.",
-    technologies: ["FastAPI", "ChatGPT", "Fine-tuning", "NLP"],
-    link: null,
-    private: true
+    name: "iab-category-classifier",
+    visibility: "private",
+    type: "AI Classification System",
+    description: "AI-powered website categorization system based on IAB taxonomy using fine-tuned ChatGPT models.",
+    engineering_highlights: {
+      ml_focus: ["Prompt tuning", "Model fine-tuning", "Text classification"],
+      use_case: "Digital marketing content classification"
+    },
+    tech_stack: ["FastAPI", "ChatGPT", "Fine-tuning", "NLP"]
+  },
+  {
+    name: "freshdesk-youtrack-integration",
+    visibility: "private",
+    type: "SaaS Integration",
+    description: "Bi-directional integration between Freshdesk and YouTrack enabling seamless synchronization.",
+    engineering_highlights: {
+      features: ["Ticket ↔ issue linking", "Comment synchronization"],
+      architecture: "Event-driven workflows using REST APIs and webhooks"
+    },
+    tech_stack: ["TypeScript", "YouTrack Apps", "Freshdesk Apps", "REST APIs"]
   }
 ];
 ---
@@ -54,31 +90,39 @@ const projects = [
         <span class="text-accent-500">./</span>Projects
       </h2>
       <div class="text-sm font-mono text-gray-500 hidden md:block">
-        Showing 6 repositories
+        Showing 7 repositories
       </div>
     </div>
 
     <!-- Project Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projects-container">
       {projects.map((project, index) => (
-        <div class="bg-[#0d1117] border border-gray-800 rounded-lg p-6 hover:border-gray-600 transition-all duration-300 group scroll-animate flex flex-col h-full" style={`animation-delay: ${index * 100}ms`}>
-          <div class="flex items-center justify-between mb-4">
+        <div class="card bg-[#0d1117] border border-gray-800 rounded-lg p-6 hover:border-gray-600 transition-all duration-300 group scroll-animate flex flex-col h-full relative overflow-hidden" style={`animation-delay: ${index * 100}ms`}>
+          {/* Spotlight Gradient */}
+          <div 
+            class="pointer-events-none absolute -inset-px opacity-0 transition duration-300 group-hover:opacity-100"
+            style="background: radial-gradient(600px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(168, 85, 247, 0.15), transparent 40%);"
+          ></div>
+
+          <div class="flex items-center justify-between mb-2 relative z-10">
             <div class="flex items-center gap-2 text-blue-400">
               <Folder size={20} />
-              <span class="font-mono font-semibold text-sm">{project.title}</span>
+              <span class="font-mono font-semibold text-sm">{project.name}</span>
             </div>
             <span class="text-xs px-2 py-0.5 rounded-full border border-gray-700 text-gray-500 font-mono">
-              {project.private ? 'Private' : 'Public'}
+              {project.visibility === 'private' ? 'Private' : 'Public'}
             </span>
           </div>
+          
+          <div class="text-xs font-mono text-gray-500 mb-4 relative z-10">{project.type}</div>
 
-          <p class="text-gray-400 text-sm mb-6 leading-relaxed font-mono flex-1">
+          <p class="text-gray-400 text-sm mb-6 leading-relaxed font-mono relative z-10">
             {project.description}
           </p>
 
-          <div class="mt-auto">
+          <div class="mt-auto relative z-10">
             <div class="flex flex-wrap gap-2 mb-4">
-              {project.technologies.map((tech) => (
+              {project.tech_stack.map((tech) => (
                 <div class="flex items-center gap-1 text-xs text-gray-500 font-mono">
                   <div class="w-2 h-2 rounded-full bg-accent-500/50"></div>
                   {tech}
@@ -118,6 +162,22 @@ const projects = [
 </style>
 
 <script>
+  // Mouse movement effect for projects
+  const container = document.getElementById("projects-container");
+  
+  if (container) {
+    container.onmousemove = e => {
+      for(const card of container.getElementsByClassName("card")) {
+        const rect = card.getBoundingClientRect(),
+              x = e.clientX - rect.left,
+              y = e.clientY - rect.top;
+
+        (card as HTMLElement).style.setProperty("--mouse-x", `${x}px`);
+        (card as HTMLElement).style.setProperty("--mouse-y", `${y}px`);
+      }
+    };
+  }
+
   const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'

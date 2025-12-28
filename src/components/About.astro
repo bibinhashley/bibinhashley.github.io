@@ -5,45 +5,51 @@ const specializations = [
   {
     key: "backend_dev",
     title: "Backend Development",
-    desc: "Building scalable backend systems, RESTful APIs, and microservices architecture.",
+    desc: "Scalable backend systems, REST APIs, and service-oriented architecture.",
     tech: ["Python", "Kotlin", "FastAPI", "Flask"]
   },
   {
     key: "ai_integration",
     title: "AI Integration",
-    desc: "AI model integration with OpenAI GPT APIs, custom ML pipelines, and automation.",
-    tech: ["OpenAI API", "GPT Models", "NLP", "ML Pipelines"]
+    desc: "Production use of LLMs for content systems, automation, and intelligent workflows.",
+    tech: ["OpenAI APIs", "GPT Models", "NLP", "ML Pipelines"]
   },
   {
     key: "devops_automation",
     title: "Automation & DevOps",
-    desc: "CI/CD pipelines, Docker containerization, monitoring systems, and QA automation.",
-    tech: ["Docker", "GCP", "Zabbix", "CI/CD"]
+    desc: "Containerized deployments, CI/CD pipelines, monitoring, and QA automation.",
+    tech: ["Docker", "GCP", "CI/CD", "Zabbix"]
   }
 ];
 ---
 
 <section id="about" class="py-20 md:py-32 px-4 relative overflow-hidden">
   <div class="max-w-7xl mx-auto relative z-10">
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+    <h2 class="text-3xl md:text-5xl font-bold font-mono text-white mb-12">
+      <span class="text-accent-500">./</span>About
+    </h2>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
       
       {/* Left Column: About Profile */}
-      <div class="scroll-animate">
-        <h2 class="text-3xl md:text-5xl font-bold font-mono text-white mb-8">
-          <span class="text-accent-500">./</span>About
-        </h2>
-        
-        <div class="bg-[#0d1117]/50 border border-gray-800 rounded-lg p-6 md:p-8 backdrop-blur-sm relative overflow-hidden group hover:border-accent-500/30 transition-colors duration-500">
+      <div class="scroll-animate" id="about-container">
+        <div class="card bg-[#0d1117]/50 border border-gray-800 rounded-lg p-6 md:p-8 backdrop-blur-sm relative overflow-hidden group hover:border-accent-500/30 transition-colors duration-500">
+          {/* Spotlight Gradient */}
+          <div 
+            class="pointer-events-none absolute -inset-px opacity-0 transition duration-300 group-hover:opacity-100"
+            style="background: radial-gradient(600px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(168, 85, 247, 0.15), transparent 40%);"
+          ></div>
+
           {/* Decorative Corner */}
-          <div class="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-40 transition-opacity">
+          <div class="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-40 transition-opacity relative z-10">
             <Terminal size={48} />
           </div>
 
-          <p class="text-gray-300 leading-relaxed mb-8 text-lg font-light text-center">
-            Building AI-powered applications and scalable APIs using <span class="text-white font-medium">Python</span>, <span class="text-white font-medium">Kotlin</span>, and modern cloud technologies. specialized in turning complex data problems into elegant software solutions.
+          <p class="text-gray-300 leading-relaxed mb-8 text-lg font-light text-left relative z-10">
+            Building scalable backend systems and AI-powered applications using <span class="text-white font-medium">Python</span>, <span class="text-white font-medium">Kotlin</span>, and <span class="text-white font-medium">cloud-native technologies</span>. Focused on clean APIs, automation, and turning complex data and workflows into reliable production systems.
           </p>
 
-          <div class="grid grid-cols-2 gap-6">
+          <div class="grid grid-cols-2 gap-6 relative z-10">
             <div class="space-y-1">
               <span class="text-xs uppercase tracking-wider text-gray-500 font-mono">Location</span>
               <div class="flex items-center gap-2 text-white font-medium">
@@ -56,7 +62,7 @@ const specializations = [
               <span class="text-xs uppercase tracking-wider text-gray-500 font-mono">Experience</span>
               <div class="flex items-center gap-2 text-white font-medium">
                 <Briefcase size={16} className="text-primary-500" />
-                4+ Years
+                4+ years
               </div>
             </div>
 
@@ -67,14 +73,14 @@ const specializations = [
 
             <div class="space-y-1">
               <span class="text-xs uppercase tracking-wider text-gray-500 font-mono">Focus</span>
-              <div class="text-white font-medium">Scalable Systems</div>
+              <div class="text-white font-medium">Scalable AI Systems</div>
             </div>
           </div>
         </div>
       </div>
 
       {/* Right Column: Specializations as Config Objects */}
-      <div class="space-y-6 lg:pt-12">
+      <div class="space-y-6">
         {specializations.map((spec, index) => (
           <div class="group border-l-2 border-gray-800 hover:border-accent-500 pl-6 transition-colors duration-300 scroll-animate" style={`animation-delay: ${index * 100}ms`}>
             <div class="flex items-center gap-3 mb-2">
@@ -115,6 +121,22 @@ const specializations = [
 </style>
 
 <script>
+  // Mouse movement effect for about card
+  const container = document.getElementById("about-container");
+  
+  if (container) {
+    container.onmousemove = e => {
+      for(const card of container.getElementsByClassName("card")) {
+        const rect = card.getBoundingClientRect(),
+              x = e.clientX - rect.left,
+              y = e.clientY - rect.top;
+
+        (card as HTMLElement).style.setProperty("--mouse-x", `${x}px`);
+        (card as HTMLElement).style.setProperty("--mouse-y", `${y}px`);
+      }
+    };
+  }
+
   const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
