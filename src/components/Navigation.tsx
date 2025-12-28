@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Terminal, DollarSign } from 'lucide-react';
+import Magnetic from './Magnetic';
 
 const Navigation = () => {
     const [activeSection, setActiveSection] = useState('hero');
@@ -67,22 +68,23 @@ const Navigation = () => {
                     {/* Desktop Menu */}
                     <div className="hidden md:flex items-center space-x-1">
                         {sections.map((section) => (
-                            <button
-                                key={section.id}
-                                onClick={() => scrollToSection(section.id)}
-                                className={`group relative px-4 py-2 rounded-md font-mono text-sm transition-all duration-300 overflow-hidden ${activeSection === section.id
-                                    ? 'text-accent-400 bg-accent-500/10'
-                                    : 'text-gray-400 hover:text-white hover:bg-white/5'
-                                    }`}
-                            >
-                                <span className="relative z-10 flex items-center gap-2">
-                                    {activeSection === section.id && <span className="text-accent-500">&gt;</span>}
-                                    {section.label}
-                                </span>
-                                {activeSection === section.id && (
-                                    <span className="absolute bottom-0 left-0 w-full h-[2px] bg-accent-500"></span>
-                                )}
-                            </button>
+                            <Magnetic key={section.id} strength={20}>
+                                <button
+                                    onClick={() => scrollToSection(section.id)}
+                                    className={`group relative px-4 py-2 rounded-md font-mono text-sm transition-all duration-300 overflow-hidden ${activeSection === section.id
+                                        ? 'text-accent-400 bg-accent-500/10'
+                                        : 'text-gray-400 hover:text-white hover:bg-white/5'
+                                        }`}
+                                >
+                                    <span className="relative z-10 flex items-center gap-2">
+                                        {activeSection === section.id && <span className="text-accent-500">&gt;</span>}
+                                        {section.label}
+                                    </span>
+                                    {activeSection === section.id && (
+                                        <span className="absolute bottom-0 left-0 w-full h-[2px] bg-accent-500"></span>
+                                    )}
+                                </button>
+                            </Magnetic>
                         ))}
                     </div>
 

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Terminal, Cpu, Database, Network, Github, Linkedin } from 'lucide-react';
+import Magnetic from './Magnetic';
 
 const Hero = () => {
   const [typedText, setTypedText] = useState('');
@@ -16,8 +17,11 @@ const Hero = () => {
     let index = 0;
     let isDeleting = false;
     let timeoutId: number;
+    let isActive = true; // Flag to prevent state updates after unmount
 
     const type = () => {
+      if (!isActive) return;
+
       setTypedText(currentText.substring(0, index));
 
       if (!isDeleting && index < currentText.length) {
@@ -37,7 +41,10 @@ const Hero = () => {
 
     timeoutId = window.setTimeout(type, 100);
 
-    return () => clearTimeout(timeoutId);
+    return () => {
+      isActive = false;
+      clearTimeout(timeoutId);
+    };
   }, [textIndex]);
 
   const codeSnippet = `class Developer {
@@ -90,33 +97,41 @@ const Hero = () => {
 
 
           <div className="flex flex-wrap gap-4">
-            <motion.a
-              href="#projects"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-mono rounded border border-primary-500 transition-colors shadow-lg shadow-primary-500/20 flex items-center gap-2"
-            >
-              <Terminal size={18} />
-              View Projects
-            </motion.a>
+            <Magnetic strength={40}>
+              <motion.a
+                href="#projects"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-mono rounded border border-primary-500 transition-colors shadow-lg shadow-primary-500/20 flex items-center gap-2"
+              >
+                <Terminal size={18} />
+                View Projects
+              </motion.a>
+            </Magnetic>
 
-            <motion.a
-              href="#contact"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-6 py-3 bg-transparent border border-gray-700 hover:border-gray-500 text-gray-300 hover:text-white font-mono rounded transition-colors"
-            >
-              Contact Me
-            </motion.a>
+            <Magnetic strength={40}>
+              <motion.a
+                href="#contact"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-6 py-3 bg-transparent border border-gray-700 hover:border-gray-500 text-gray-300 hover:text-white font-mono rounded transition-colors block" // added block to ensure anchor takes full width of magnetic wrapper if needed
+              >
+                Contact Me
+              </motion.a>
+            </Magnetic>
           </div>
 
-          <div className="flex gap-6 mt-12 items-center">
-            <a href="https://github.com/bibinhashley" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300">
-              <Github size={24} />
-            </a>
-            <a href="https://linkedin.com/in/bibinhashley" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300">
-              <Linkedin size={24} />
-            </a>
+          <div className="flex gap-6 mt-12 items-center relative z-20">
+            <Magnetic strength={20}>
+              <a href="https://github.com/bibinhashley" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300 p-2 block">
+                <Github size={24} />
+              </a>
+            </Magnetic>
+            <Magnetic strength={20}>
+              <a href="https://linkedin.com/in/bibinhashley" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors duration-300 p-2 block">
+                <Linkedin size={24} />
+              </a>
+            </Magnetic>
           </div>
         </motion.div>
 
