@@ -1,68 +1,105 @@
 ---
+import { Code2, Layout, Brain, BarChart3, Database, Cloud, Network, Activity, Globe } from 'lucide-react';
+
 const skillCategories = [
   {
     title: "Languages",
-    skills: ["Python", "Kotlin", "Java", "SQL", "JavaScript"],
-    color: "primary",
+    skills: ["Python", "JavaScript", "SQL", "Java", "Kotlin"],
+    icon: Code2,
+    color: "text-blue-400"
   },
   {
-    title: "Frameworks",
-    skills: ["Flask", "FastAPI", "Django", "OpenAI GPT APIs"],
-    color: "accent",
+    title: "Backend Frameworks",
+    skills: ["Flask", "FastAPI", "Django"],
+    icon: Layout,
+    color: "text-purple-400"
   },
   {
-    title: "Database",
-    skills: ["ClickHouse", "PostgreSQL", "REST APIs"],
-    color: "primary",
+    title: "AI & LLM Tools",
+    skills: ["OpenAI APIs", "Prompt Engineering", "Content Gen", "Fine-tuning", "Workflows"],
+    icon: Brain,
+    color: "text-blue-400"
   },
   {
-    title: "Infrastructure",
-    skills: ["Docker", "GCP", "CI/CD", "Git"],
-    color: "accent",
+    title: "Data & ML",
+    skills: ["NumPy", "Pandas", "scikit-learn", "Basic ML", "Data Analysis"],
+    icon: BarChart3,
+    color: "text-purple-400"
   },
   {
-    title: "AI/ML Tools",
-    skills: ["scikit-learn", "NumPy", "Pandas", "OpenAI"],
-    color: "primary",
+    title: "Databases",
+    skills: ["PostgreSQL", "ClickHouse"],
+    icon: Database,
+    color: "text-blue-400"
   },
   {
-    title: "Monitoring",
-    skills: ["Zabbix", "Agile practices", "Markdown"],
-    color: "accent",
+    title: "Cloud Infrastructure",
+    skills: ["GCP", "Docker", "CI/CD Pipelines", "Git"],
+    icon: Cloud,
+    color: "text-purple-400"
+  },
+  {
+    title: "API & Integrations",
+    skills: ["REST API Design", "3rd-party Integrations", "Freshdesk Apps", "YouTrack Apps", "OAuth"],
+    icon: Network,
+    color: "text-blue-400"
+  },
+  {
+    title: "Monitoring & Ops",
+    skills: ["Zabbix", "Logging", "Observability", "Agile Practices"],
+    icon: Activity,
+    color: "text-purple-400"
+  },
+  {
+    title: "Domain Expertise",
+    skills: ["AI Content Systems", "SEO Automation", "SaaS Backend", "Workflow Automation"],
+    icon: Globe,
+    color: "text-blue-400"
   }
 ];
 ---
 
 <section id="skills" class="py-20 md:py-32 px-4 relative overflow-hidden">
   <div class="max-w-7xl mx-auto relative z-10">
-    <!-- Section Header -->
-    <div class="text-center mb-16 md:mb-20">
-      <h2 class="text-3xl md:text-5xl font-bold font-mono mb-4">
-        <span class="text-white">Technical </span>
-        <span class="text-accent-400">Skills</span>
+    <div class="mb-12 text-left">
+      <h2 class="text-3xl md:text-5xl font-bold font-mono text-white">
+        <span class="text-accent-500">./</span>Skills
       </h2>
+
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="cards-container">
       {skillCategories.map((category, index) => (
-        <div class="bg-dev-card border border-dev-border rounded-2xl p-5 md:p-6 lg:p-8 hover:border-accent-400 transition-all duration-300 group relative overflow-hidden scroll-animate" style={`animation-delay: ${index * 100}ms`}>
-          <h3 class="text-lg md:text-xl lg:text-2xl font-bold text-white mb-3 md:mb-4 font-mono group-hover:text-accent-400 transition-colors duration-300">
-            {category.title}
-          </h3>
-          <div class="flex flex-wrap gap-1.5 md:gap-2">
-            {category.skills.map((skill) => (
-              <span class={`px-2.5 py-1 md:px-3 md:py-1.5 rounded-lg text-xs md:text-sm font-medium font-mono transition-all duration-300 ${
-                category.color === 'accent'
-                  ? 'bg-accent-500/20 text-accent-300 border border-accent-500/30 hover:bg-accent-500/30'
-                  : 'bg-primary-500/20 text-primary-300 border border-primary-500/30 hover:bg-primary-500/30'
-              }`}>
-                {skill}
-              </span>
-            ))}
+        <div 
+          class="card group relative bg-[#0f141c]/80 border border-gray-800 rounded-xl p-6 h-full overflow-hidden transition-all duration-300 hover:border-gray-700 scroll-animate backdrop-blur-sm"
+          style={`animation-delay: ${index * 50}ms`}
+        >
+          {/* Spotlight Gradient - Controlled by JS */}
+          <div 
+            class="pointer-events-none absolute -inset-px opacity-0 transition duration-300 group-hover:opacity-100"
+            style="background: radial-gradient(600px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(168, 85, 247, 0.15), transparent 40%);"
+          ></div>
+          
+          <div class="relative z-10 flex flex-col h-full">
+            <div class="flex items-center gap-3 mb-6">
+              <div class={`p-2.5 rounded-lg bg-[#1e293b]/50 border border-gray-700/50 ${category.color}`}>
+                <category.icon size={24} />
+              </div>
+              <h3 class="text-lg font-bold text-white font-mono">
+                {category.title}
+              </h3>
+            </div>
+            
+            <div class="flex flex-wrap gap-2 mt-auto">
+              {category.skills.map((skill) => (
+                <span 
+                  class="text-xs px-3 py-1.5 rounded-md font-medium font-mono text-gray-300 bg-white/5 border border-white/5 transition-colors group-hover:border-white/10 group-hover:text-white group-hover:bg-white/10"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
           </div>
-
-          <!-- Hover glow effect -->
-          <div class="absolute inset-0 bg-gradient-to-r from-accent-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl"></div>
         </div>
       ))}
     </div>
@@ -70,10 +107,14 @@ const skillCategories = [
 </section>
 
 <style>
+  .card:hover::before {
+    opacity: 1;
+  }
+  
   .scroll-animate {
     opacity: 0;
-    transform: translateY(50px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
   }
 
   .scroll-animate.visible {
@@ -83,6 +124,23 @@ const skillCategories = [
 </style>
 
 <script>
+  // Mouse movement effect for cards
+  const container = document.getElementById("cards-container");
+  
+  if (container) {
+    container.onmousemove = e => {
+      for(const card of document.getElementsByClassName("card")) {
+        const rect = card.getBoundingClientRect(),
+              x = e.clientX - rect.left,
+              y = e.clientY - rect.top;
+
+        (card as HTMLElement).style.setProperty("--mouse-x", `${x}px`);
+        (card as HTMLElement).style.setProperty("--mouse-y", `${y}px`);
+      }
+    };
+  }
+
+  // Scroll Animation Observer
   const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px'
@@ -100,3 +158,4 @@ const skillCategories = [
     observer.observe(el);
   });
 </script>
+

@@ -1,87 +1,103 @@
 ---
+import { Folder, ExternalLink, Star } from 'lucide-react';
+
 const projects = [
   {
-    title: "Hakata Couture",
-    description: "Luxury e-commerce platform for custom-fitted ethnic wear with personalized measurements, featuring traditional sarees, coord sets, and professional wear.",
-    technologies: ["Next.js", "React", "Supabase", "Tailwind CSS"],
-    link: "https://www.hakatacouture.com"
+    title: "hakata-couture",
+    description: "Luxury e-commerce platform for custom-fitted ethnic wear with personalized measurements.",
+    technologies: ["Next.js", "React", "Supabase", "Tailwind"],
+    link: "https://www.hakatacouture.com",
+    private: false
   },
   {
-    title: "Keyword Enrichment Tool",
-    description: "Advanced AI-powered keyword enrichment system using OpenAI's GPT models for content optimization and SEO enhancement.",
-    technologies: ["Python", "OpenAI API", "Flask", "NLP"],
-    link: null
+    title: "keyword-enrichment-tool",
+    description: "Advanced AI-powered keyword enrichment system using OpenAI's GPT models for content optimization.",
+    technologies: ["Python", "OpenAI", "Flask", "NLP"],
+    link: null,
+    private: true
   },
   {
-    title: "AI Editor Backend",
-    description: "Custom AI-powered content editor backend with Flask and GPT-4 integration for intelligent content generation and editing.",
+    title: "ai-editor-backend",
+    description: "Custom AI-powered content editor backend with Flask and GPT-4 integration.",
     technologies: ["Python", "FastAPI", "Flask", "GPT-4"],
-    link: null
+    link: null,
+    private: true
   },
   {
-    title: "QA Automation Framework",
-    description: "Comprehensive Quality Assurance automation framework built with Kotlin for enterprise-grade testing and monitoring.",
+    title: "qa-automation-framework",
+    description: "Comprehensive Quality Assurance automation framework built with Kotlin.",
     technologies: ["Kotlin", "JUnit", "WireMock", "Zabbix"],
-    link: null
+    link: null,
+    private: true
   },
   {
-    title: "RESTful ML APIs",
-    description: "High-performance machine learning APIs built with FastAPI, featuring real-time model inference and data processing.",
-    technologies: ["FastAPI", "ML Models", "Docker", "GCP"],
-    link: null
+    title: "restful-ml-apis",
+    description: "High-performance machine learning APIs built with FastAPI, featuring real-time model inference.",
+    technologies: ["FastAPI", "ML", "Docker", "GCP"],
+    link: null,
+    private: true
   },
   {
-    title: "IAB Category Classifier",
-    description: "AI-powered website analyzer that automatically categorizes websites into IAB categories using fine-tuned ChatGPT models.",
+    title: "iab-category-classifier",
+    description: "AI-powered website analyzer categorization using fine-tuned ChatGPT models.",
     technologies: ["FastAPI", "ChatGPT", "Fine-tuning", "NLP"],
-    link: null
+    link: null,
+    private: true
   }
 ];
 ---
 
 <section id="projects" class="py-20 md:py-32 px-4 relative overflow-hidden">
   <div class="max-w-7xl mx-auto relative z-10">
-    <!-- Section Header -->
-    <div class="text-center mb-16 md:mb-20">
-      <h2 class="text-3xl md:text-5xl font-bold font-mono mb-4">
-        <span class="text-white">Featured </span>
-        <span class="text-accent-400">Projects</span>
+    <div class="flex items-center justify-between mb-16">
+      <h2 class="text-3xl md:text-5xl font-bold font-mono text-white">
+        <span class="text-accent-500">./</span>Projects
       </h2>
+      <div class="text-sm font-mono text-gray-500 hidden md:block">
+        Showing 6 repositories
+      </div>
     </div>
 
     <!-- Project Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {projects.map((project, index) => (
-        <div class="bg-dev-card border border-dev-border rounded-2xl p-5 md:p-6 hover:border-accent-400 transition-all duration-300 group scroll-animate" style={`animation-delay: ${index * 100}ms`}>
-          <h3 class="text-lg md:text-xl font-bold text-white mb-3 group-hover:text-accent-400 transition-colors duration-300 font-mono">
-            {project.title}
-          </h3>
+        <div class="bg-[#0d1117] border border-gray-800 rounded-lg p-6 hover:border-gray-600 transition-all duration-300 group scroll-animate flex flex-col h-full" style={`animation-delay: ${index * 100}ms`}>
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center gap-2 text-blue-400">
+              <Folder size={20} />
+              <span class="font-mono font-semibold text-sm">{project.title}</span>
+            </div>
+            <span class="text-xs px-2 py-0.5 rounded-full border border-gray-700 text-gray-500 font-mono">
+              {project.private ? 'Private' : 'Public'}
+            </span>
+          </div>
 
-          <p class="text-dev-text mb-4 leading-relaxed text-sm md:text-base">
+          <p class="text-gray-400 text-sm mb-6 leading-relaxed font-mono flex-1">
             {project.description}
           </p>
 
-          <div class="flex flex-wrap gap-1.5 md:gap-2 mb-4">
-            {project.technologies.map((tech) => (
-              <span class="px-2 py-0.5 md:px-2 md:py-1 bg-dev-bg border border-dev-border text-dev-muted rounded text-xs font-mono">
-                {tech}
-              </span>
-            ))}
-          </div>
+          <div class="mt-auto">
+            <div class="flex flex-wrap gap-2 mb-4">
+              {project.technologies.map((tech) => (
+                <div class="flex items-center gap-1 text-xs text-gray-500 font-mono">
+                  <div class="w-2 h-2 rounded-full bg-accent-500/50"></div>
+                  {tech}
+                </div>
+              ))}
+            </div>
 
-          {project.link && (
-            <a
-              href={project.link}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 text-xs md:text-sm text-primary-400 hover:text-accent-400 font-mono transition-colors duration-300"
-            >
-              <span>View Project</span>
-              <svg xmlns="http://www.w3.org/2000/svg" class="w-3 h-3 md:w-4 md:h-4 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </a>
-          )}
+            {project.link && (
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 text-xs text-white hover:text-accent-400 font-mono transition-colors border-t border-gray-800 pt-3 w-full"
+              >
+                <ExternalLink size={14} />
+                <span>View Deployment</span>
+              </a>
+            )}
+          </div>
         </div>
       ))}
     </div>
@@ -91,7 +107,7 @@ const projects = [
 <style>
   .scroll-animate {
     opacity: 0;
-    transform: translateY(50px);
+    transform: translateY(20px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
   }
 
@@ -119,3 +135,4 @@ const projects = [
     observer.observe(el);
   });
 </script>
+

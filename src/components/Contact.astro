@@ -1,74 +1,90 @@
 ---
+import { Github, Linkedin, Mail, MapPin, Terminal } from 'lucide-react';
+
 const contactLinks = [
   {
     label: "Email",
     value: "bibinhashley@gmail.com",
     href: "mailto:bibinhashley@gmail.com",
-    icon: "✉️"
+    command: "ssh mail@bibin",
+    icon: Mail
   },
   {
     label: "GitHub",
     value: "bibinhashley",
     href: "https://github.com/bibinhashley",
-    icon: "🐙"
+    command: "git clone @bibin",
+    icon: Github
   },
   {
     label: "LinkedIn",
     value: "bibinhashley",
     href: "https://linkedin.com/in/bibinhashley",
-    icon: "💼"
+    command: "curl -v linkedin/bibin",
+    icon: Linkedin
   },
   {
     label: "Location",
     value: "Kozhikode, Kerala, India",
     href: null,
-    icon: "📍"
+    command: "ping -c 4 india-server",
+    icon: MapPin
   }
 ];
 ---
 
 <section id="contact" class="py-20 md:py-32 px-4 relative overflow-hidden">
   <div class="max-w-7xl mx-auto relative z-10">
-    <!-- Section Header -->
-    <div class="text-center mb-16 md:mb-20">
-      <h2 class="text-3xl md:text-5xl font-bold font-mono mb-4">
-        <span class="text-white">Get In </span>
-        <span class="text-accent-400">Touch</span>
+    <div class="text-left mb-16">
+      <h2 class="text-3xl md:text-5xl font-bold font-mono text-white mb-4">
+        <span class="text-accent-500">./</span>Contact
       </h2>
-      <p class="text-dev-text text-sm md:text-base lg:text-lg max-w-2xl mx-auto px-4">
-        Let's collaborate on your next project and bring your ideas to life with cutting-edge technology.
-      </p>
+
     </div>
 
-    <div class="max-w-2xl mx-auto">
-      <!-- Contact Links -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
-        {contactLinks.map((link, index) => (
-          link.href ? (
-            <a
-              href={link.href}
-              target={link.href.startsWith('mailto:') ? '_self' : '_blank'}
-              rel="noopener noreferrer"
-              class="flex items-center gap-3 md:gap-4 bg-dev-card border border-dev-border rounded-lg p-4 md:p-5 lg:p-6 hover:border-accent-400 transition-all duration-300 group scroll-animate"
-              style={`animation-delay: ${index * 100}ms`}
-            >
-              <span class="text-2xl md:text-3xl">{link.icon}</span>
-              <div class="text-left min-w-0 flex-1">
-                <h3 class="font-semibold text-white text-sm md:text-base font-mono group-hover:text-accent-400 transition-colors duration-300">{link.label}</h3>
-                <p class="text-dev-muted text-xs md:text-sm font-mono truncate">{link.value}</p>
-              </div>
-            </a>
-          ) : (
-            <div class="flex items-center gap-3 md:gap-4 bg-dev-card border border-dev-border rounded-lg p-4 md:p-5 lg:p-6 scroll-animate" style={`animation-delay: ${index * 100}ms`}>
-              <span class="text-2xl md:text-3xl">{link.icon}</span>
-              <div class="text-left min-w-0 flex-1">
-                <h3 class="font-semibold text-white text-sm md:text-base font-mono">{link.label}</h3>
-                <p class="text-dev-muted text-xs md:text-sm font-mono">{link.value}</p>
-              </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto">
+      {contactLinks.map((link, index) => (
+        link.href ? (
+          <a
+            href={link.href}
+            target={link.href.startsWith('mailto:') ? '_self' : '_blank'}
+            rel="noopener noreferrer"
+            class="group bg-[#0d1117]/50 border border-gray-800 p-6 rounded-lg hover:border-accent-500/50 hover:bg-[#0d1117] transition-all duration-300 scroll-animate flex items-center gap-4 backdrop-blur-sm"
+            style={`animation-delay: ${index * 100}ms`}
+          >
+            <div class="p-3 bg-gray-900/80 rounded-lg group-hover:bg-accent-500/10 transition-colors">
+              <link.icon size={24} className="text-gray-400 group-hover:text-accent-500 transition-colors" />
             </div>
-          )
-        ))}
-      </div>
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between mb-1">
+                <h3 class="font-bold text-white text-sm">{link.label}</h3>
+                <span class="text-[10px] font-mono text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity">
+                   {link.command}
+                </span>
+              </div>
+              <p class="text-gray-400 text-sm truncate group-hover:text-gray-300 transition-colors">{link.value}</p>
+            </div>
+          </a>
+        ) : (
+          <div 
+            class="group bg-[#0d1117]/50 border border-gray-800 p-6 rounded-lg scroll-animate flex items-center gap-4 cursor-default backdrop-blur-sm" 
+            style={`animation-delay: ${index * 100}ms`}
+          >
+            <div class="p-3 bg-gray-900/80 rounded-lg">
+              <link.icon size={24} className="text-gray-400" />
+            </div>
+            <div class="flex-1 min-w-0">
+               <div class="flex items-center justify-between mb-1">
+                <h3 class="font-bold text-white text-sm">{link.label}</h3>
+                <span class="text-[10px] font-mono text-gray-600 opacity-0 group-hover:opacity-100 transition-opacity">
+                   {link.command}
+                </span>
+              </div>
+              <p class="text-gray-400 text-sm truncate">{link.value}</p>
+            </div>
+          </div>
+        )
+      ))}
     </div>
   </div>
 </section>
@@ -76,7 +92,7 @@ const contactLinks = [
 <style>
   .scroll-animate {
     opacity: 0;
-    transform: translateY(50px);
+    transform: translateY(20px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
   }
 
@@ -104,3 +120,4 @@ const contactLinks = [
     observer.observe(el);
   });
 </script>
+

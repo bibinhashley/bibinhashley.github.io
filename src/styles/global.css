@@ -2,6 +2,54 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Roboto Mono', monospace;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  @apply bg-dev-bg text-dev-text antialiased;
+}
+
+.terminal-cursor::after {
+  content: '▋';
+  animation: blink 1s step-end infinite;
+  @apply ml-1 text-accent-500;
+}
+
+@keyframes blink {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+.glass-panel {
+  @apply bg-dev-card/80 backdrop-blur-md border border-dev-border shadow-xl;
+}
+
+.code-keyword {
+  @apply text-primary-400;
+}
+
+.code-string {
+  @apply text-green-400;
+}
+
+.code-function {
+  @apply text-accent-400;
+}
+
+.code-comment {
+  @apply text-gray-500 italic;
+}
+
+
 /* CSS Custom Properties for theming */
 :root {
   --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -69,12 +117,12 @@ body {
   }
 
   .glass-card {
-    background: linear-gradient(135deg, 
-      rgba(255, 255, 255, 0.1) 0%, 
-      rgba(255, 255, 255, 0.05) 100%);
+    background: linear-gradient(135deg,
+        rgba(255, 255, 255, 0.1) 0%,
+        rgba(255, 255, 255, 0.05) 100%);
     backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 
+    box-shadow:
       0 8px 32px rgba(0, 0, 0, 0.2),
       inset 0 1px 0 rgba(255, 255, 255, 0.1);
   }
@@ -126,10 +174,10 @@ body {
   }
 
   .shimmer {
-    background: linear-gradient(90deg, 
-      rgba(255, 255, 255, 0) 0%, 
-      rgba(255, 255, 255, 0.1) 50%, 
-      rgba(255, 255, 255, 0) 100%);
+    background: linear-gradient(90deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(255, 255, 255, 0) 100%);
     background-size: 200% 100%;
     animation: shimmer 3s infinite;
   }
@@ -141,6 +189,7 @@ body {
     opacity: 0;
     transform: translateY(30px) scale(0.95);
   }
+
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -152,6 +201,7 @@ body {
     opacity: 0;
     transform: translateX(-30px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -163,6 +213,7 @@ body {
     opacity: 0;
     transform: translateX(30px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -174,6 +225,7 @@ body {
     opacity: 0;
     transform: scale(0.8);
   }
+
   to {
     opacity: 1;
     transform: scale(1);
@@ -181,9 +233,12 @@ body {
 }
 
 @keyframes floating {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px) rotate(0deg);
   }
+
   50% {
     transform: translateY(-10px) rotate(1deg);
   }
@@ -193,26 +248,34 @@ body {
   0% {
     background-position: -200% 0;
   }
+
   100% {
     background-position: 200% 0;
   }
 }
 
 @keyframes pulse-glow {
-  0%, 100% {
+
+  0%,
+  100% {
     box-shadow: 0 0 20px rgba(96, 165, 250, 0.3);
   }
+
   50% {
     box-shadow: 0 0 40px rgba(96, 165, 250, 0.6);
   }
 }
 
 @keyframes cursor-blink {
-  0%, 50% { 
-    opacity: 1; 
+
+  0%,
+  50% {
+    opacity: 1;
   }
-  51%, 100% { 
-    opacity: 0; 
+
+  51%,
+  100% {
+    opacity: 0;
   }
 }
 
@@ -220,6 +283,7 @@ body {
   from {
     width: 0;
   }
+
   to {
     width: 100%;
   }
@@ -275,15 +339,33 @@ body {
 }
 
 /* Staggered animation delays */
-.stagger-1 { animation-delay: 0.1s; }
-.stagger-2 { animation-delay: 0.2s; }
-.stagger-3 { animation-delay: 0.3s; }
-.stagger-4 { animation-delay: 0.4s; }
-.stagger-5 { animation-delay: 0.5s; }
-.stagger-6 { animation-delay: 0.6s; }
+.stagger-1 {
+  animation-delay: 0.1s;
+}
+
+.stagger-2 {
+  animation-delay: 0.2s;
+}
+
+.stagger-3 {
+  animation-delay: 0.3s;
+}
+
+.stagger-4 {
+  animation-delay: 0.4s;
+}
+
+.stagger-5 {
+  animation-delay: 0.5s;
+}
+
+.stagger-6 {
+  animation-delay: 0.6s;
+}
 
 /* Respect user motion preferences */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -291,7 +373,7 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
-  
+
   .floating,
   .floating-delayed,
   .shimmer {
@@ -300,6 +382,7 @@ body {
 }
 
 @media (prefers-reduced-motion: no-preference) {
+
   .animate-fade-in,
   .animate-fade-in-left,
   .animate-fade-in-right,

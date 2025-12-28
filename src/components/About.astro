@@ -1,95 +1,102 @@
 ---
+import { Terminal, MapPin, Briefcase } from 'lucide-react';
+
 const specializations = [
   {
+    key: "backend_dev",
     title: "Backend Development",
-    description: "Python & Kotlin expert building scalable backend systems, RESTful APIs, and microservices architecture.",
-    tech: ["Python", "Kotlin", "FastAPI", "Flask"],
-    color: "primary"
+    desc: "Building scalable backend systems, RESTful APIs, and microservices architecture.",
+    tech: ["Python", "Kotlin", "FastAPI", "Flask"]
   },
   {
+    key: "ai_integration",
     title: "AI Integration",
-    description: "AI model integration with OpenAI GPT APIs, custom ML pipelines, and intelligent automation systems.",
-    tech: ["OpenAI API", "GPT Models", "NLP", "ML Pipelines"],
-    color: "accent"
+    desc: "AI model integration with OpenAI GPT APIs, custom ML pipelines, and automation.",
+    tech: ["OpenAI API", "GPT Models", "NLP", "ML Pipelines"]
   },
   {
+    key: "devops_automation",
     title: "Automation & DevOps",
-    description: "CI/CD pipelines, Docker containerization, monitoring systems, and enterprise-grade QA automation.",
-    tech: ["Docker", "GCP", "Zabbix", "CI/CD"],
-    color: "primary"
+    desc: "CI/CD pipelines, Docker containerization, monitoring systems, and QA automation.",
+    tech: ["Docker", "GCP", "Zabbix", "CI/CD"]
   }
 ];
 ---
 
 <section id="about" class="py-20 md:py-32 px-4 relative overflow-hidden">
   <div class="max-w-7xl mx-auto relative z-10">
-    <!-- Section Header -->
-    <div class="text-center mb-16 md:mb-20">
-      <h2 class="text-3xl md:text-5xl font-bold font-mono mb-4">
-        <span class="text-white">About </span>
-        <span class="text-accent-400">Me</span>
-      </h2>
-    </div>
-
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-start">
-      {/* Profile Card */}
-      <div class="bg-dev-card border border-dev-border rounded-2xl p-6 md:p-8 lg:p-10 hover:border-accent-400/50 transition-all duration-300 scroll-animate">
-        <div class="space-y-6 text-center">
-          <div class="flex flex-col items-center space-y-4 mb-6">
-            <div class="w-16 h-16 md:w-20 md:h-20 bg-gradient-to-r from-accent-500 to-primary-500 rounded-2xl flex items-center justify-center shadow-lg">
-              <span class="text-white font-bold text-2xl md:text-3xl font-mono">BH</span>
-            </div>
-            <div>
-              <h3 class="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-2 font-mono">Backend Developer</h3>
-              <p class="text-primary-400 font-medium text-base md:text-lg font-mono">4+ Years Experience</p>
-            </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+      
+      {/* Left Column: About Profile */}
+      <div class="scroll-animate">
+        <h2 class="text-3xl md:text-5xl font-bold font-mono text-white mb-8">
+          <span class="text-accent-500">./</span>About
+        </h2>
+        
+        <div class="bg-[#0d1117]/50 border border-gray-800 rounded-lg p-6 md:p-8 backdrop-blur-sm relative overflow-hidden group hover:border-accent-500/30 transition-colors duration-500">
+          {/* Decorative Corner */}
+          <div class="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-40 transition-opacity">
+            <Terminal size={48} />
           </div>
 
-          <p class="text-dev-text text-base md:text-lg leading-relaxed px-2">
-            Backend developer with <span class="text-accent-400 font-semibold">4+ years experience</span>{' '}
-            building AI-powered applications and scalable APIs using Python, Kotlin, and modern frameworks.
+          <p class="text-gray-300 leading-relaxed mb-8 text-lg font-light text-center">
+            Building AI-powered applications and scalable APIs using <span class="text-white font-medium">Python</span>, <span class="text-white font-medium">Kotlin</span>, and modern cloud technologies. specialized in turning complex data problems into elegant software solutions.
           </p>
 
-          {/* Stats Row */}
-          <div class="grid grid-cols-3 gap-2 md:gap-4 pt-6 border-t border-dev-border">
-            <div class="text-center">
-              <div class="text-xl md:text-2xl lg:text-3xl font-bold text-accent-400 font-mono">7+</div>
-              <div class="text-xs md:text-sm text-dev-muted font-mono">Projects</div>
+          <div class="grid grid-cols-2 gap-6">
+            <div class="space-y-1">
+              <span class="text-xs uppercase tracking-wider text-gray-500 font-mono">Location</span>
+              <div class="flex items-center gap-2 text-white font-medium">
+                <MapPin size={16} className="text-accent-500" />
+                Kerala, India
+              </div>
             </div>
-            <div class="text-center">
-              <div class="text-xl md:text-2xl lg:text-3xl font-bold text-primary-400 font-mono">4+</div>
-              <div class="text-xs md:text-sm text-dev-muted font-mono">Years</div>
+            
+            <div class="space-y-1">
+              <span class="text-xs uppercase tracking-wider text-gray-500 font-mono">Experience</span>
+              <div class="flex items-center gap-2 text-white font-medium">
+                <Briefcase size={16} className="text-primary-500" />
+                4+ Years
+              </div>
             </div>
-            <div class="text-center">
-              <div class="text-xl md:text-2xl lg:text-3xl font-bold text-accent-400 font-mono">10+</div>
-              <div class="text-xs md:text-sm text-dev-muted font-mono">Stacks</div>
+
+            <div class="space-y-1">
+              <span class="text-xs uppercase tracking-wider text-gray-500 font-mono">Role</span>
+              <div class="text-white font-medium">Backend Developer</div>
+            </div>
+
+            <div class="space-y-1">
+              <span class="text-xs uppercase tracking-wider text-gray-500 font-mono">Focus</span>
+              <div class="text-white font-medium">Scalable Systems</div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Specializations */}
-      <div class="space-y-4 md:space-y-6">
+      {/* Right Column: Specializations as Config Objects */}
+      <div class="space-y-6 lg:pt-12">
         {specializations.map((spec, index) => (
-          <div class={`bg-dev-card border border-dev-border rounded-2xl p-5 md:p-6 lg:p-8 hover:border-{spec.color}-400/50 transition-all duration-300 group scroll-animate`} style={`animation-delay: ${index * 100}ms`}>
-            <div class="space-y-3 md:space-y-4">
-              <h3 class={`text-lg md:text-xl lg:text-2xl font-bold text-white group-hover:text-${spec.color}-400 transition-colors duration-300 font-mono`}>
+          <div class="group border-l-2 border-gray-800 hover:border-accent-500 pl-6 transition-colors duration-300 scroll-animate" style={`animation-delay: ${index * 100}ms`}>
+            <div class="flex items-center gap-3 mb-2">
+              <h3 class="text-xl font-bold text-white group-hover:text-accent-400 transition-colors">
                 {spec.title}
               </h3>
-              <p class="text-dev-text text-sm md:text-base leading-relaxed">
-                {spec.description}
-              </p>
-              <div class="flex flex-wrap gap-2">
-                {spec.tech.map((tech) => (
-                  <span class={`px-2.5 py-1 md:px-3 md:py-1 bg-${spec.color}-500/20 text-${spec.color}-300 rounded-lg text-xs md:text-sm font-medium border border-${spec.color}-500/30 font-mono`}>
-                    {tech}
-                  </span>
-                ))}
-              </div>
+              <div class="h-px bg-gray-800 flex-1 group-hover:bg-accent-500/20 transition-colors"></div>
+            </div>
+            <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+              {spec.desc}
+            </p>
+            <div class="flex flex-wrap gap-2">
+              {spec.tech.map((tech) => (
+                <span class="text-xs px-2.5 py-1 rounded-full bg-white/5 border border-white/5 text-gray-300 font-medium group-hover:border-accent-500/20 group-hover:text-white transition-all">
+                  {tech}
+                </span>
+              ))}
             </div>
           </div>
         ))}
       </div>
+
     </div>
   </div>
 </section>
@@ -97,7 +104,7 @@ const specializations = [
 <style>
   .scroll-animate {
     opacity: 0;
-    transform: translateY(50px);
+    transform: translateY(30px);
     transition: opacity 0.6s ease-out, transform 0.6s ease-out;
   }
 
@@ -125,3 +132,4 @@ const specializations = [
     observer.observe(el);
   });
 </script>
+
