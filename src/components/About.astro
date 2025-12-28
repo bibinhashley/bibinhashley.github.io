@@ -25,28 +25,25 @@ const specializations = [
 
 <section id="about" class="py-20 md:py-32 px-4 relative overflow-hidden">
   <div class="max-w-7xl mx-auto relative z-10">
-    <h2 class="text-3xl md:text-5xl font-bold font-mono text-white mb-12">
+    <h2 class="text-2xl md:text-5xl font-bold font-mono text-white mb-12">
       <span class="text-accent-500">./</span>About
     </h2>
 
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-      
-      {/* Left Column: About Profile */}
+
       <div class="scroll-animate" id="about-container">
         <div class="card bg-[#0d1117]/50 border border-gray-800 rounded-lg p-6 md:p-8 backdrop-blur-sm relative overflow-hidden group hover:border-accent-500/30 transition-colors duration-500">
-          {/* Spotlight Gradient */}
-          <div 
+          <div
             class="pointer-events-none absolute -inset-px opacity-0 transition duration-300 group-hover:opacity-100"
             style="background: radial-gradient(600px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(168, 85, 247, 0.15), transparent 40%);"
           ></div>
 
-          {/* Decorative Corner */}
           <div class="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-40 transition-opacity relative z-10">
             <Terminal size={48} />
           </div>
 
           <p class="text-gray-300 leading-relaxed mb-8 text-lg font-light text-left relative z-10">
-            I am a <span class="text-white font-medium">Python AI Engineer</span> and <span class="text-white font-medium">Backend Developer</span> based in <span class="text-white font-medium">Kerala, India</span>. I specialize in building scalable **AI-powered backend systems**, confident **automation workflows**, and production-grade APIs using **Python** & **Kotlin**.
+            I am a <span class="text-white font-medium">Python AI Engineer</span> and <span class="text-white font-medium">Backend Developer</span> based in <span class="text-white font-medium">Kerala, India</span>. I specialize in building scalable <span class="text-white font-medium">AI-powered backend systems</span>, confident <span class="text-white font-medium">automation workflows</span>, and production-grade APIs using <span class="text-white font-medium">Python</span> & <span class="text-white font-medium">Kotlin</span>.
           </p>
 
           <div class="grid grid-cols-2 gap-6 relative z-10">
@@ -79,7 +76,6 @@ const specializations = [
         </div>
       </div>
 
-      {/* Right Column: Specializations as Config Objects */}
       <div class="space-y-6">
         {specializations.map((spec, index) => (
           <div class="group border-l-2 border-gray-800 hover:border-accent-500 pl-6 transition-colors duration-300 scroll-animate" style={`animation-delay: ${index * 100}ms`}>
@@ -121,7 +117,6 @@ const specializations = [
 </style>
 
 <script>
-  // Mouse movement effect for about card
   const container = document.getElementById("about-container");
   
   if (container) {

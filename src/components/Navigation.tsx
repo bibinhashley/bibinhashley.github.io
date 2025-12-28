@@ -27,12 +27,18 @@ const Navigation = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-            // Always check scroll position for navbar styling
             setScrolled(window.scrollY > 50);
 
-            // Only update active section on home page
             if (isHome) {
                 const scrollPosition = window.scrollY + 100;
+                const windowHeight = window.innerHeight;
+                const documentHeight = document.documentElement.scrollHeight;
+
+                if (scrollPosition + windowHeight >= documentHeight - 100) {
+                    setActiveSection('contact');
+                    return;
+                }
+
                 sections.forEach(section => {
                     const element = document.getElementById(section.id);
                     if (element) {
@@ -47,7 +53,6 @@ const Navigation = () => {
 
         window.addEventListener('scroll', handleScroll, { passive: true });
 
-        // Initial check
         handleScroll();
 
         return () => window.removeEventListener('scroll', handleScroll);
@@ -76,7 +81,6 @@ const Navigation = () => {
             }`}>
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
-                    {/* Logo */}
                     <button
                         onClick={() => scrollToSection('hero')}
                         className="flex items-center gap-2 group"
@@ -87,7 +91,6 @@ const Navigation = () => {
                         </span>
                     </button>
 
-                    {/* Desktop Menu */}
                     <div className="hidden md:flex items-center space-x-1">
                         {sections.map((section) => (
                             <Magnetic key={section.id} strength={20}>
@@ -110,7 +113,6 @@ const Navigation = () => {
                         ))}
                     </div>
 
-                    {/* Mobile Menu Button */}
                     <button
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                         className="md:hidden p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/10 transition-colors"
@@ -120,7 +122,6 @@ const Navigation = () => {
                 </div>
             </div>
 
-            {/* Mobile Menu */}
             {isMobileMenuOpen && (
                 <div className="md:hidden border-t border-gray-800 bg-[#0a0a0a]">
                     <div className="px-4 py-2 space-y-1">

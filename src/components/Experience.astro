@@ -24,14 +24,13 @@ const experiences = [
 <section id="experience" class="py-20 md:py-32 px-4 relative overflow-hidden">
   <div class="max-w-7xl mx-auto relative z-10">
     <div class="text-left mb-16">
-      <h2 class="text-3xl md:text-5xl font-bold font-mono text-white mb-8">
+      <h2 class="text-2xl md:text-5xl font-bold font-mono text-white mb-8">
         <span class="text-accent-500">./</span>Experience
       </h2>
     </div>
 
     <div class="relative pl-12 md:pl-20">
-      {/* Vertical Line */}
-      <div 
+      <div
         id="timeline-line"
         class="absolute left-6 md:left-10 top-0 bottom-0 w-px bg-gradient-to-b from-accent-500 via-accent-500 via-50% to-transparent origin-top scale-y-0 shadow-[0_0_8px_rgba(168,85,247,0.5)]"
       ></div>
@@ -39,7 +38,6 @@ const experiences = [
       <div class="space-y-12" id="experience-container">
         {experiences.map((exp, index) => (
           <div class="relative scroll-animate" style={`animation-delay: ${index * 150}ms`}>
-            {/* Timeline Dot */}
             <div class="absolute -left-[30px] md:-left-12 top-2 w-3 h-3 md:w-4 md:h-4 rounded-full border-[3px] border-[#0a0a0a] bg-accent-500 z-10 shadow-[0_0_10px_rgba(168,85,247,0.4)]"></div>
             
             <div class="flex flex-col md:flex-row gap-4 md:gap-8 items-start group">
@@ -49,10 +47,9 @@ const experiences = [
                   <GitCommit size={10} /> {exp.hash}
                 </div>
               </div>
-              
+
               <div class="card flex-1 bg-[#0d1117]/30 border border-gray-800/50 p-6 rounded-lg hover:bg-[#0d1117]/80 hover:border-accent-500/30 transition-all duration-300 relative overflow-hidden">
-                {/* Spotlight Gradient */}
-                <div 
+                <div
                   class="pointer-events-none absolute -inset-px opacity-0 transition duration-300 group-hover:opacity-100"
                   style="background: radial-gradient(600px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(168, 85, 247, 0.15), transparent 40%);"
                 ></div>
@@ -96,7 +93,6 @@ const experiences = [
 </style>
 
 <script>
-  // Mouse movement effect for experience cards
   const container = document.getElementById("experience-container");
   
   if (container) {
@@ -129,30 +125,24 @@ const experiences = [
     observer.observe(el);
   });
 
-  // Scroll-linked animation for the timeline line
   const timelineLine = document.getElementById('timeline-line');
   const experienceSection = document.getElementById('experience-container');
 
   if (timelineLine && experienceSection) {
-    // Ensure the line is full height initially but scaled to 0
     timelineLine.style.height = '100%';
-    timelineLine.style.transition = 'transform 0.1s linear'; // Short transition for smoothness but responsive
+    timelineLine.style.transition = 'transform 0.1s linear';
     
     const updateLine = () => {
       const rect = experienceSection.getBoundingClientRect();
       const windowHeight = window.innerHeight;
-      
-      // Calculate progress: start drawing when top of section hits 75% of viewport
-      // Finish when bottom of section hits 75% of viewport
+
       const startOffset = windowHeight * 0.75;
       const endOffset = windowHeight * 0.75;
-      
+
       const totalDist = rect.height;
       const scrolled = (windowHeight - rect.top) - (windowHeight - startOffset);
-      
+
       let progress = scrolled / totalDist;
-      
-      // Clamp progress between 0 and 1
       progress = Math.max(0, Math.min(1, progress));
       
       timelineLine.style.transform = `scaleY(${progress})`;
@@ -161,8 +151,7 @@ const experiences = [
     window.addEventListener('scroll', () => {
       requestAnimationFrame(updateLine);
     });
-    
-    // Initial call
+
     updateLine();
   }
 </script>

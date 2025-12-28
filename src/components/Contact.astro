@@ -36,7 +36,7 @@ const contactLinks = [
 <section id="contact" class="py-20 md:py-32 px-4 relative overflow-hidden">
   <div class="max-w-7xl mx-auto relative z-10">
     <div class="text-left mb-16">
-      <h2 class="text-3xl md:text-5xl font-bold font-mono text-white mb-4">
+      <h2 class="text-2xl md:text-5xl font-bold font-mono text-white mb-4">
         <span class="text-accent-500">./</span>Contact
       </h2>
 
@@ -52,8 +52,7 @@ const contactLinks = [
             class="card group bg-[#0d1117]/50 border border-gray-800 p-6 rounded-lg hover:border-accent-500/50 hover:bg-[#0d1117] transition-all duration-300 scroll-animate flex items-center gap-4 backdrop-blur-sm relative overflow-hidden"
             style={`animation-delay: ${index * 100}ms`}
           >
-            {/* Spotlight Gradient */}
-            <div 
+            <div
               class="pointer-events-none absolute -inset-px opacity-0 transition duration-300 group-hover:opacity-100"
               style="background: radial-gradient(600px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(168, 85, 247, 0.15), transparent 40%);"
             ></div>
@@ -73,11 +72,10 @@ const contactLinks = [
           </a>
         ) : (
           <div 
-            class="card group bg-[#0d1117]/50 border border-gray-800 p-6 rounded-lg scroll-animate flex items-center gap-4 cursor-default backdrop-blur-sm relative overflow-hidden" 
+            class="card group bg-[#0d1117]/50 border border-gray-800 p-6 rounded-lg scroll-animate flex items-center gap-4 cursor-default backdrop-blur-sm relative overflow-hidden"
             style={`animation-delay: ${index * 100}ms`}
           >
-            {/* Spotlight Gradient */}
-            <div 
+            <div
               class="pointer-events-none absolute -inset-px opacity-0 transition duration-300 group-hover:opacity-100"
               style="background: radial-gradient(600px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(168, 85, 247, 0.15), transparent 40%);"
             ></div>
@@ -115,7 +113,6 @@ const contactLinks = [
 </style>
 
 <script>
-  // Mouse movement effect for contact cards
   const container = document.getElementById("contact-container");
   
   if (container) {
