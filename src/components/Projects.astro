@@ -78,35 +78,39 @@ import SpotlightCard from './SpotlightCard';
 </style>
 
 <script>
-  const container = document.getElementById("projects-container");
-  
-  if (container) {
-    container.onmousemove = e => {
-      for(const card of container.getElementsByClassName("project-card")) {
-        const rect = card.getBoundingClientRect(),
-              x = e.clientX - rect.left,
-              y = e.clientY - rect.top;
+  const initProjects = () => {
+    const container = document.getElementById("projects-container");
+    
+    if (container) {
+      container.onmousemove = e => {
+        for(const card of container.getElementsByClassName("project-card")) {
+          const rect = card.getBoundingClientRect(),
+                x = e.clientX - rect.left,
+                y = e.clientY - rect.top;
 
-        (card as HTMLElement).style.setProperty("--mouse-x", `${x}px`);
-        (card as HTMLElement).style.setProperty("--mouse-y", `${y}px`);
-      }
+          (card as HTMLElement).style.setProperty("--mouse-x", `${x}px`);
+          (card as HTMLElement).style.setProperty("--mouse-y", `${y}px`);
+        }
+      };
+    }
+
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
     };
-  }
 
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-animate').forEach((el) => {
+      observer.observe(el);
+    });
   };
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, observerOptions);
-
-  document.querySelectorAll('.scroll-animate').forEach((el) => {
-    observer.observe(el);
-  });
+  document.addEventListener('astro:page-load', initProjects);
 </script>

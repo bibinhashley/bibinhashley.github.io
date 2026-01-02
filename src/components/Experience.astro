@@ -93,66 +93,70 @@ const experiences = [
 </style>
 
 <script>
-  const container = document.getElementById("experience-container");
-  
-  if (container) {
-    container.onmousemove = e => {
-      for(const card of container.getElementsByClassName("card")) {
-        const rect = card.getBoundingClientRect(),
-              x = e.clientX - rect.left,
-              y = e.clientY - rect.top;
+  const initExperience = () => {
+    const container = document.getElementById("experience-container");
+    
+    if (container) {
+      container.onmousemove = e => {
+        for(const card of container.getElementsByClassName("card")) {
+          const rect = card.getBoundingClientRect(),
+                x = e.clientX - rect.left,
+                y = e.clientY - rect.top;
 
-        (card as HTMLElement).style.setProperty("--mouse-x", `${x}px`);
-        (card as HTMLElement).style.setProperty("--mouse-y", `${y}px`);
-      }
+          (card as HTMLElement).style.setProperty("--mouse-x", `${x}px`);
+          (card as HTMLElement).style.setProperty("--mouse-y", `${y}px`);
+        }
+      };
+    }
+
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
     };
-  }
 
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-animate').forEach((el) => {
+      observer.observe(el);
+    });
+
+    const timelineLine = document.getElementById('timeline-line');
+    const experienceSection = document.getElementById('experience-container');
+
+    if (timelineLine && experienceSection) {
+      timelineLine.style.height = '100%';
+      timelineLine.style.transition = 'transform 0.1s linear';
+      
+      const updateLine = () => {
+        const rect = experienceSection.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+
+        const startOffset = windowHeight * 0.75;
+        const endOffset = windowHeight * 0.75;
+
+        const totalDist = rect.height;
+        const scrolled = (windowHeight - rect.top) - (windowHeight - startOffset);
+
+        let progress = scrolled / totalDist;
+        progress = Math.max(0, Math.min(1, progress));
+        
+        timelineLine.style.transform = `scaleY(${progress})`;
+      };
+
+      window.addEventListener('scroll', () => {
+        requestAnimationFrame(updateLine);
+      });
+
+      updateLine();
+    }
   };
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, observerOptions);
-
-  document.querySelectorAll('.scroll-animate').forEach((el) => {
-    observer.observe(el);
-  });
-
-  const timelineLine = document.getElementById('timeline-line');
-  const experienceSection = document.getElementById('experience-container');
-
-  if (timelineLine && experienceSection) {
-    timelineLine.style.height = '100%';
-    timelineLine.style.transition = 'transform 0.1s linear';
-    
-    const updateLine = () => {
-      const rect = experienceSection.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-
-      const startOffset = windowHeight * 0.75;
-      const endOffset = windowHeight * 0.75;
-
-      const totalDist = rect.height;
-      const scrolled = (windowHeight - rect.top) - (windowHeight - startOffset);
-
-      let progress = scrolled / totalDist;
-      progress = Math.max(0, Math.min(1, progress));
-      
-      timelineLine.style.transform = `scaleY(${progress})`;
-    };
-
-    window.addEventListener('scroll', () => {
-      requestAnimationFrame(updateLine);
-    });
-
-    updateLine();
-  }
+  document.addEventListener('astro:page-load', initExperience);
 </script>
 
