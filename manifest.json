@@ -1,0 +1,24 @@
+{
+    "name": "Bibin Hashley O P | Python AI Developer",
+    "short_name": "Bibin Hashley O P",
+    "description": "Bibin Hashley O P - Senior Python AI Developer specializing in machine learning, automation scripting, and Kotlin development.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0f172a",
+    "theme_color": "#1e40af",
+    "orientation": "portrait-primary",
+    "icons": [
+        {
+            "src": "/favicon.ico",
+            "sizes": "16x16 32x32",
+            "type": "image/x-icon"
+        }
+    ],
+    "categories": [
+        "productivity",
+        "business",
+        "developer tools"
+    ],
+    "lang": "en-US",
+    "dir": "ltr"
+}
