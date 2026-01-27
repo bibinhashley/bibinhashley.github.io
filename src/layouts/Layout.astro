@@ -10,9 +10,9 @@ export interface Props {
 }
 
 const { 
-  title = "Bibin Hashley | Python & AI Systems Engineer | Kerala, India", 
-  description = "Bibin Hashley is a Senior Python & AI Systems Engineer in Kerala, specializing in building scalable AI agents, machine learning systems, and backend automation using Python & Kotlin.",
-  keywords = "Bibin Hashley, Bibin Hashley python developer, Bibin Hashley backend engineer, Bibin Hashley AI engineer, python backend engineer, python backend developer india, backend developer python, fastapi python developer, flask backend developer, python ai engineer, ai backend engineer, ai powered backend systems, ai integration backend"
+  title = "Bibin Hashley | Python AI Developer & Backend Engineer | Kerala", 
+  description = "Bibin Hashley is a Senior Python AI Developer & Backend Engineer in Kerala, specializing in scalable AI systems, FastAPI/Flask services, and intelligent automation.",
+  keywords = "Python AI developer Kozhikode, Backend developer Kozhikode, Python developer Kerala, AI developer Kerala India, FastAPI developer Kerala, Flask API developer Kerala, Software consultant Kochi, Python API developer Malappuram, Remote backend developer India, Kotlin backend developer Kerala"
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -25,6 +25,12 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <ClientRouter />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Geo Meta Tags for Local Relevance -->
+    <meta name="geo.region" content="IN-KL" />
+    <meta name="geo.placename" content="Kozhikode" />
+    <meta name="geo.position" content="11.2588;75.7804" />
+    <meta name="ICBM" content="11.2588, 75.7804" />
     
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalURL} />
@@ -113,8 +119,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         "@type": "Person",
         "name": "Bibin Hashley O P",
         "alternateName": "Bibin Hashley",
-        "jobTitle": ["Senior Python AI Developer", "Machine Learning Engineer", "Automation Specialist"],
-        "description": "Senior Python AI Developer with 4+ years of expertise in machine learning, intelligent automation, and scalable AI systems development.",
+        "jobTitle": ["Python AI Developer", "Backend Engineer", "Software Consultant"],
+        "description": "Senior Python AI Developer and Backend Engineer based in Kozhikode, Kerala. Expert in building scalable AI systems, FastAPI/Flask services, and intelligent automation solutions.",
         "url": "https://bibinhashley.github.io",
         "image": "https://bibinhashley.github.io/og-image.png",
         "email": "bibinhashley@gmail.com",
@@ -136,37 +142,28 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         },
         "knowsAbout": [
           "Python AI Development",
-          "Machine Learning Engineering",
-          "Intelligent Automation",
-          "Python Scripting",
-          "Kotlin Development",
-          "OpenAI GPT Integration",
-          "Natural Language Processing",
-          "Flask Framework",
-          "FastAPI Development",
-          "Backend Development",
-          "API Development",
-          "Database Systems",
-          "Cloud Computing",
-          "Docker Containerization",
-          "Software Architecture",
-          "Data Science",
-          "scikit-learn",
-          "TensorFlow",
-          "PyTorch",
-          "NumPy",
-          "Pandas",
-          "Automation Scripting"
+          "Backend Engineering",
+          "FastAPI",
+          "Flask",
+          "OpenAI API Integration",
+          "Machine Learning APIs",
+          "AI Automation",
+          "Docker",
+          "Google Cloud Platform (GCP)",
+          "PostgreSQL",
+          "Redis",
+          "Kotlin Backend Development"
         ],
         "hasOccupation": {
           "@type": "Occupation",
-          "name": "Senior Python AI Developer & Machine Learning Engineer",
+          "name": "Senior Python AI Developer",
           "occupationalCategory": "15-1252.00",
-          "skills": "Python AI Development, Machine Learning Engineering, Intelligent Automation, Python Scripting, Kotlin Development, OpenAI GPT Integration, Flask, FastAPI, Backend Development, API Design, Data Science",
+          "skills": "Python, FastAPI, Flask, AI Integration, Backend Systems, Automation, Machine Learning",
           "workLocation": "Kerala, India"
         }
       }
     </script>
+
     
     <!-- Website Schema -->
     <script type="application/ld+json">
